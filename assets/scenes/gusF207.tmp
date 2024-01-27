@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dokparb45duvc"]
+
+[ext_resource type="Texture2D" uid="uid://bvoenrg5lyq3x" path="res://assets/tmp_gust.png" id="1_m8ypg"]
+
+[sub_resource type="GDScript" id="GDScript_5yx0k"]
+script/source = "extends Node2D
+
+@export var ROTATION_SPEED = 6
+
+var _ccw = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+	
+func spawn(pos, vel):
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	rotate(ROTATION_SPEED * delta)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmpa5"]
+
+[node name="Gust" type="Node2D"]
+script = SubResource("GDScript_5yx0k")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wmpa5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.400001, 0.400001)
+texture = ExtResource("1_m8ypg")

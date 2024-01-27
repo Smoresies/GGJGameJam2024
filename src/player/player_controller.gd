@@ -3,23 +3,29 @@ extends CharacterBody2D
 
 @export_category("Character Speed Controls")
 @export var GROUND_SPEED = 400
-@export var AIR_SPEED = 0
-@export var AIR_ACCEL = 200
+@export var LUNGE_FORCE = -50
 @export var STOP_SPEED = 300
-@export var JUMP_VELOCITY = -400
-@export var FLAP_FORCE = 0
+@export var AIR_ACCEL = 200
+@export var AIR_DECEL = 2000
+@export var FLAP_FORCE = 2500
+@export var MIN_GUST_SPEED = 8
+@export var MAX_GUST_SPEED = 20
+@export var JUMP_VELOCITY = -800
 @export var MAX_SPEED = 1000
 
 @export var LAND_COOLDOWN = 0.05
-@export var FLAP_COOLDOWN = 1000000
+@export var FLAP_COOLDOWN = .1
 @export var ARM_SPEED_BUFFER = 10
 
 @export var GRAVITY_MUL = 1.9
 @export var GRAVITY_RAMP = 300
 @export var GRAVITY_MIN = 1.0
 
-@export var FLY_ANIMATION = "testFlyAnimation"
-@export var IDLE_ANIMATION = "testIdleAnimation"
+@export var FLY_ANIMATION = "TestFlyAnimation"
+@export var IDLE_ANIMATION = "TestIdleAnimation"
+@export var FLAP_ANIMATION = "TestIdleAnimation"
+
+var _gust_pool = null
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _arm = $Arm
@@ -28,6 +34,7 @@ extends CharacterBody2D
 enum STATES {
 	GROUNDED,
 	JUMPING,
+	FLAPPING,
 }
 
 var _state = STATES.JUMPING
@@ -36,13 +43,14 @@ var _xinput = 0
 
 var _ave_arm_speed = 0
 
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
 func _get_gravity(y_vel):
 	return GRAVITY_MUL * gravity * (GRAVITY_MIN + 1 - clamp(GRAVITY_RAMP - abs(y_vel), 0, GRAVITY_RAMP) / GRAVITY_RAMP)
+	
+#func _ready():
+#	_gust_pool = get_node("root/GustPool")
 	
 func _process(delta):
 	_xinput = Input.get_axis("left", "right")
@@ -56,7 +64,6 @@ func _process(delta):
 	
 	_ave_arm_speed = (_ave_arm_speed * ARM_SPEED_BUFFER + abs(angle_diff) / delta) / (ARM_SPEED_BUFFER + 1)
 	
-	
 func _set_state_grounded():
 	_animated_sprite.stop()
 	_animated_sprite.play(IDLE_ANIMATION)
@@ -67,45 +74,21 @@ func _set_state_jumping():
 	_animated_sprite.stop()
 	_animated_sprite.play(FLY_ANIMATION)
 	_state = STATES.JUMPING
+	_state_timer = 0
+	
+func _set_state_flapping():
+	_animated_sprite.stop()
+	_animated_sprite.play(FLAP_ANIMATION)
+	_state = STATES.FLAPPING
 	_state_timer = FLAP_COOLDOWN
 	
-func _process_state_jumping(delta):
-	if is_on_floor():
-		_set_state_grounded()
-		return
-		
-	if Input.is_action_pressed("jump"):
-		#velocity = flap_dir.normalized() * FLAP_FORCE
-		
-		var mouse_diff = get_global_mouse_position() - position
-		var mouse_dist = mouse_diff.length()
-		var mouse_dir = mouse_diff / mouse_dist
-		
-		if _state_timer == 0:
-			if mouse_dir.y < 0:
-				if mouse_dist > 10:
-					velocity = mouse_dir * AIR_SPEED
-					_state_timer = FLAP_COOLDOWN
-			elif mouse_dir.y > .9 and mouse_dist > 100:
-				velocity.y += FLAP_FORCE
-			else:
-				velocity.x = move_toward(velocity.x, sign(mouse_dir.x) * AIR_SPEED, AIR_SPEED)
-				_state_timer = FLAP_COOLDOWN
-	
-	# Add gravity.
-	velocity.y += _get_gravity(velocity.y) * delta
-	
-	# Get the input direction and handle the movement/deceleration.
-	if _xinput:
-		if sign(velocity.x) != sign(_xinput):
-			velocity.x += _xinput * AIR_ACCEL * 10 * delta
-		else:
-			velocity.x += _xinput * AIR_ACCEL * delta
-		
-	if abs(velocity.x) > MAX_SPEED:
-		velocity.x = sign(velocity.x) * MAX_SPEED
+func _process_arm(delta):
+	if MIN_GUST_SPEED < _ave_arm_speed and _ave_arm_speed < MAX_GUST_SPEED:
+		velocity -= Vector2.from_angle(_arm.rotation) * FLAP_FORCE * delta
+		return true
+	return false
 
-func _process_state_grounded(_delta):
+func _process_state_grounded(delta):
 	if not is_on_floor():
 		_set_state_jumping()
 		return
@@ -118,8 +101,42 @@ func _process_state_grounded(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	if _xinput:
 		velocity.x = _xinput * GROUND_SPEED
+		velocity.y = LUNGE_FORCE
 	else:
 		velocity.x = move_toward(velocity.x, 0, STOP_SPEED)
+		
+	if _process_arm(delta):
+		_set_state_flapping()
+	
+func _process_state_jumping(delta):
+	if is_on_floor():
+		_set_state_grounded()
+		return
+	
+	# Add gravity.
+	velocity.y += _get_gravity(velocity.y) * delta
+	
+	# Get the input direction and handle the movement/deceleration.
+	if _xinput:
+		if sign(velocity.x) != sign(_xinput):
+			velocity.x += _xinput * AIR_DECEL * delta
+		else:
+			velocity.x += _xinput * AIR_ACCEL * delta
+		
+	if abs(velocity.x) > MAX_SPEED:
+		velocity.x = sign(velocity.x) * MAX_SPEED
+	if velocity.y < -MAX_SPEED:
+		velocity.y = -MAX_SPEED
+	
+func _process_state_flapping(delta):
+	if is_on_floor():
+		_set_state_grounded()
+		return
+	if _state_timer == 0:
+		_set_state_jumping()
+		return
+	velocity.y += _get_gravity(velocity.y) * delta
+	_process_arm(delta)
 
 func _physics_process(delta):
 	_state_timer = move_toward(_state_timer, 0, delta)
@@ -130,7 +147,7 @@ func _physics_process(delta):
 	elif _state == STATES.JUMPING:
 		_process_state_jumping(delta)
 		
-	if _ave_arm_speed > 10:
-		velocity -= Vector2.from_angle(_arm.rotation) * AIR_ACCEL * delta * 7
+	elif _state == STATES.FLAPPING:
+		_process_state_flapping(delta)
 
 	move_and_slide()
