@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfh8epnpel4xq"]
+
+[ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
+size = Vector2(1804, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47dyc"]
+size = Vector2(57, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcn7e"]
+size = Vector2(55, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgf3v"]
+size = Vector2(64, 136)
+
+[node name="TutorialLevel" type="Node2D"]
+
+[node name="BackgroundObjects" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BackgroundObjects"]
+position = Vector2(2, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D"]
+position = Vector2(892, 12)
+shape = SubResource("RectangleShape2D_7esrx")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="BackgroundObjects"]
+position = Vector2(-76, 524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D2"]
+position = Vector2(648, 48)
+shape = SubResource("RectangleShape2D_47dyc")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="BackgroundObjects"]
+position = Vector2(-76, 524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D3"]
+position = Vector2(850, 48)
+shape = SubResource("RectangleShape2D_bcn7e")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="BackgroundObjects"]
+position = Vector2(-76, 524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D4"]
+position = Vector2(1065, 11)
+shape = SubResource("RectangleShape2D_qgf3v")
+
+[node name="Player" parent="." instance=ExtResource("1_swf5b")]
+position = Vector2(286, 178)
