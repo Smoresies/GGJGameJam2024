@@ -1,3 +1,4 @@
+class_name PlayerController
 extends CharacterBody2D
 
 @export_category("Character Speed Controls")
