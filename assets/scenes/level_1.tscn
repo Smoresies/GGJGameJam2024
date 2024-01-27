@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgkf1qafujt1a"]
+[gd_scene load_steps=8 format=3 uid="uid://cgkf1qafujt1a"]
 
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_8ggq5"]
+[ext_resource type="Script" path="res://src/gust_manager.gd" id="2_008ec"]
 [ext_resource type="Script" path="res://src/camera/camera_controller.gd" id="3_41w7s"]
 [ext_resource type="PackedScene" uid="uid://dokparb45duvc" path="res://assets/scenes/gust.tscn" id="3_qidio"]
+[ext_resource type="PackedScene" uid="uid://br6248uggat6s" path="res://assets/scenes/TestBall.tscn" id="4_6jo8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87tga"]
 
@@ -15,7 +17,522 @@ anchor_mode = 0
 script = ExtResource("3_41w7s")
 PLAYER = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("1_8ggq5")]
+[node name="GustPool" type="Node" parent="."]
+script = ExtResource("2_008ec")
+
+[node name="Gust1" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust2" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust3" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust4" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust5" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust6" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust7" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust8" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust9" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust10" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust11" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust12" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust13" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust14" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust15" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust16" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust17" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust18" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust19" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust20" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust21" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust22" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust23" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust24" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust25" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust26" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust27" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust28" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust29" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust30" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust31" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust32" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust33" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust34" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust35" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust36" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust37" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust38" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust39" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust40" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust41" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust42" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust43" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust44" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust45" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust46" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust47" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust48" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust49" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust50" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust51" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust52" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust53" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust54" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust55" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust56" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust57" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust58" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust59" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust60" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust61" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust62" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust63" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust64" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust65" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust66" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust67" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust68" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust69" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust70" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust71" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust72" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust73" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust74" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust75" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust76" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust77" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust78" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust79" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust80" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust81" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust82" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust83" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust84" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust85" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust86" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust87" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust88" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust89" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust90" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust91" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust92" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust93" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust94" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust95" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust96" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust97" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust98" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust99" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust100" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust101" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust102" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust103" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust104" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust105" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust106" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust107" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust108" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust109" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust110" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust111" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust112" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust113" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust114" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust115" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust116" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust117" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust118" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust119" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust120" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust121" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust122" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust123" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust124" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust125" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust126" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust127" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Gust128" parent="GustPool" instance=ExtResource("3_qidio")]
+visible = false
+position = Vector2(587, 353)
+
+[node name="Player" parent="." node_paths=PackedStringArray("_gust_pool") instance=ExtResource("1_8ggq5")]
 position = Vector2(510, 354)
 scale = Vector2(0.75, 0.75)
 AIR_ACCEL = 500
@@ -23,11 +540,11 @@ FLAP_FORCE = 2500
 MIN_GUST_SPEED = 8
 MAX_GUST_SPEED = 30
 MAX_SPEED = 600
-LAND_COOLDOWN = 0.2
 FLAP_COOLDOWN = 2.0
 ARM_SPEED_BUFFER = 5
 GRAVITY_MUL = 1.3
 GRAVITY_RAMP = 400
+_gust_pool = NodePath("../GustPool")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -50,8 +567,8 @@ scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_wv71j")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1155, 397)
-scale = Vector2(5, 5)
+position = Vector2(1163, 455)
+scale = Vector2(23.9882, -1.98327)
 shape = SubResource("RectangleShape2D_87tga")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D4"]
@@ -184,7 +701,5 @@ shape = SubResource("RectangleShape2D_87tga")
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_wv71j")
 
-[node name="GustPool" type="Node" parent="."]
-
-[node name="Gust1" parent="GustPool" instance=ExtResource("3_qidio")]
-position = Vector2(587, 353)
+[node name="TestBall" parent="." instance=ExtResource("4_6jo8u")]
+position = Vector2(1017, 362)

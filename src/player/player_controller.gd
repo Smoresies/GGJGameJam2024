@@ -8,12 +8,15 @@ extends CharacterBody2D
 @export var AIR_ACCEL = 200
 @export var AIR_DECEL = 2000
 @export var FLAP_FORCE = 2500
+
 @export var MIN_GUST_SPEED = 8
 @export var MAX_GUST_SPEED = 20
+@export var GUST_SPEED = 300
+@export var ARM_LENGTH = 50
+
 @export var JUMP_VELOCITY = -800
 @export var MAX_SPEED = 1000
 
-@export var LAND_COOLDOWN = 0.05
 @export var FLAP_COOLDOWN = .1
 @export var ARM_SPEED_BUFFER = 10
 
@@ -24,8 +27,9 @@ extends CharacterBody2D
 @export var FLY_ANIMATION = "TestFlyAnimation"
 @export var IDLE_ANIMATION = "TestIdleAnimation"
 @export var FLAP_ANIMATION = "TestIdleAnimation"
+@export var FENCING_ANIMATION = "TestFencingAnimation"
 
-var _gust_pool = null
+@export var _gust_pool : Node
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _arm = $Arm
@@ -49,9 +53,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _get_gravity(y_vel):
 	return GRAVITY_MUL * gravity * (GRAVITY_MIN + 1 - clamp(GRAVITY_RAMP - abs(y_vel), 0, GRAVITY_RAMP) / GRAVITY_RAMP)
 	
-#func _ready():
-#	_gust_pool = get_node("root/GustPool")
-	
 func _process(delta):
 	_xinput = Input.get_axis("left", "right")
 	
@@ -68,7 +69,7 @@ func _set_state_grounded():
 	_animated_sprite.stop()
 	_animated_sprite.play(IDLE_ANIMATION)
 	_state = STATES.GROUNDED
-	_state_timer = LAND_COOLDOWN
+	_state_timer = 0
 
 func _set_state_jumping():
 	_animated_sprite.stop()
@@ -84,7 +85,11 @@ func _set_state_flapping():
 	
 func _process_arm(delta):
 	if MIN_GUST_SPEED < _ave_arm_speed and _ave_arm_speed < MAX_GUST_SPEED:
-		velocity -= Vector2.from_angle(_arm.rotation) * FLAP_FORCE * delta
+		var arm_direction = Vector2.from_angle(_arm.rotation)
+		velocity -= arm_direction * FLAP_FORCE * delta
+		var gust_pos = position + arm_direction * ARM_LENGTH
+		var gust_dir = arm_direction * GUST_SPEED
+		_gust_pool.spawn(gust_pos, gust_dir)
 		return true
 	return false
 
@@ -94,18 +99,18 @@ func _process_state_grounded(delta):
 		return
 		
 	# Handle jump.
-	if Input.is_action_pressed("jump") and _state_timer == 0:
+	if Input.is_action_pressed("jump"):
 		velocity.y = JUMP_VELOCITY
 		_set_state_jumping()
 	
 	# Get the input direction and handle the movement/deceleration.
 	if _xinput:
 		velocity.x = _xinput * GROUND_SPEED
-		velocity.y = LUNGE_FORCE
+		#velocity.y = LUNGE_FORCE
 	else:
 		velocity.x = move_toward(velocity.x, 0, STOP_SPEED)
 		
-	if _process_arm(delta):
+	if _process_arm(delta): # returns true if the player flapped their arm
 		_set_state_flapping()
 	
 func _process_state_jumping(delta):
