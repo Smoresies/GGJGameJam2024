@@ -20,7 +20,8 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY = -800
 @export var MAX_SPEED = 600
 
-@export var FLAP_COOLDOWN = 2.0
+@export var ASSISTED_FLAP_HANDICAP = .3
+@export var FLAP_COOLDOWN = 1.8
 @export var ARM_SPEED_BUFFER = 10
 
 @export var GRAVITY_MUL = 1.9
@@ -30,8 +31,8 @@ extends CharacterBody2D
 @export var FLY_ANIMATION = "TestFlyAnimation"
 @export var IDLE_ANIMATION = "TestIdleAnimation"
 @export var FLAP_ANIMATION = "TestIdleAnimation"
-@export var FENCING_ANIMATION = "TestFencingAnimation"
-@export var FALL_ANIMATION = "TestFencingAnimation"
+@export var FENCING_ANIMATION = "TestIdleAnimation"
+@export var FALL_ANIMATION = "TestIdleAnimation"
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _arm = $Arm
@@ -162,7 +163,7 @@ func _process_state_flapping(delta):
 	if is_on_floor():
 		_set_state_grounded()
 		return
-	if _state_timer > FLAP_COOLDOWN:
+	if _state_timer > FLAP_COOLDOWN - int(Input.is_action_pressed("Flutter")) * ASSISTED_FLAP_HANDICAP:
 		_set_state_falling()
 		return
 		

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgkf1qafujt1a"]
 
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_8ggq5"]
-[ext_resource type="Script" path="res://src/camera/camera_controller.gd" id="3_41w7s"]
+[ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_iu4k5"]
 [ext_resource type="PackedScene" uid="uid://b0hk73geu0cl0" path="res://assets/scenes/fencing_trigger.tscn" id="4_kgnqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87tga"]
@@ -10,16 +10,13 @@
 
 [node name="Level1" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("PLAYER")]
-anchor_mode = 0
-script = ExtResource("3_41w7s")
+[node name="Camera" parent="." node_paths=PackedStringArray("PLAYER") instance=ExtResource("1_iu4k5")]
 PLAYER = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_8ggq5")]
 position = Vector2(1326, 354)
 scale = Vector2(0.75, 0.75)
 MAX_SPEED = 500
-FLAP_COOLDOWN = 1.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

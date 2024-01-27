@@ -29,7 +29,6 @@ animations = [{
 collision_layer = 2
 script = ExtResource("1_bxxnf")
 FLY_ANIMATION = "TestIdleAnimation"
-FENCING_ANIMATION = "TestIdleAnimation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.959998, 1)
