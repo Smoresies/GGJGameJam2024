@@ -18,8 +18,25 @@ PLAYER = NodePath("../Player")
 [node name="Player" parent="." instance=ExtResource("1_8ggq5")]
 position = Vector2(1326, 354)
 scale = Vector2(0.75, 0.75)
+GROUND_SPEED = null
+STOP_SPEED = null
+AIR_ACCEL = null
+AIR_DECEL = null
+FLAP_FORCE = null
+FLAP_GRAVITY_MOD = null
+FENCING_LUNGE_COOLDOWN = null
+FENCING_LUNGE_SPEED = null
+FENCING_LUNGE_ARM_OFFSET = null
+FENCING_HOP_SPEED = null
+MIN_GUST_SPEED = null
+JUMP_VELOCITY = null
 MAX_SPEED = 500
 FLAP_COOLDOWN = 1.5
+GRAVITY_RAMP = null
+GRAVITY_MIN = null
+IDLE_ANIMATION = null
+FLAP_ANIMATION = null
+FALL_ANIMATION = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
