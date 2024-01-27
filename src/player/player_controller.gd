@@ -218,3 +218,5 @@ func _physics_process(delta):
 		_process_state_fencing(delta)
 
 	move_and_slide()
+
+

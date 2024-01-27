@@ -195,9 +195,6 @@ texture = SubResource("CanvasTexture_wv71j")
 position = Vector2(2479, 418)
 _player = NodePath("../Player")
 
-[node name="FencingTrigger" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_kgnqq")]
+[node name="FencingTrigger" parent="." instance=ExtResource("4_kgnqq")]
 position = Vector2(2321, 498)
 scale = Vector2(39.28, 2.36)
-_player = NodePath("../Player")
-
-[connection signal="triggered_fencing" from="FencingTrigger" to="Player" method="_set_state_jousting"]
