@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://rdchyi7a67oe"]
+[gd_scene load_steps=22 format=3 uid="uid://rdchyi7a67oe"]
 
 [ext_resource type="Script" path="res://src/player/player_controller.gd" id="1_bxxnf"]
+[ext_resource type="Texture2D" uid="uid://7evald3slhgt" path="res://assets/Art/Feather_asset.png" id="2_q7qts"]
 [ext_resource type="Texture2D" uid="uid://c1wfdy26oc0o1" path="res://assets/Art/arm.png" id="2_s0n6e"]
 [ext_resource type="Texture2D" uid="uid://cd3nha5b1yqxa" path="res://assets/Art/Walking_sprites.png" id="3_xapl8"]
 [ext_resource type="Texture2D" uid="uid://5agextqf4m4a" path="res://assets/Art/jump_sprites.png" id="4_y2dds"]
@@ -152,20 +153,27 @@ shape = SubResource("CapsuleShape2D_bmnpf")
 [node name="Arm" type="Node2D" parent="."]
 position = Vector2(0, 7)
 
-[node name="Pointer" type="Sprite2D" parent="Arm"]
-position = Vector2(-5, -6)
-rotation = -0.74002
-scale = Vector2(0.27, 0.27)
-texture = ExtResource("2_s0n6e")
-
 [node name="Area2D" type="Area2D" parent="Arm"]
+position = Vector2(9, 20)
 scale = Vector2(0.920001, 1)
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/Area2D"]
-position = Vector2(66, -1)
+position = Vector2(96.739, 0)
 shape = SubResource("CircleShape2D_2h02b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arm"]
+position = Vector2(-4, 1)
+rotation = -0.482685
+scale = Vector2(0.30087, 0.373949)
+texture = ExtResource("2_s0n6e")
+
+[node name="Pointer" type="Sprite2D" parent="Arm/Sprite2D"]
+position = Vector2(160.362, 134.032)
+rotation = 1.94094
+scale = Vector2(0.23, 0.303883)
+texture = ExtResource("2_q7qts")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, 0)
