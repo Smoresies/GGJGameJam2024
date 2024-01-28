@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=24 format=3 uid="uid://cyocad6w3qxb0"]
 
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_rpm7l"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
+[ext_resource type="Texture2D" uid="uid://dpmrocsnjpcy1" path="res://assets/Art/IMG_0056.PNG" id="2_4o2hp"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
 [ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
+[ext_resource type="Texture2D" uid="uid://bvn5ir0k574lc" path="res://assets/Art/IMG_0057.PNG" id="3_lumjg"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="5_qvla3"]
 [ext_resource type="Script" path="res://assets/scenes/tutorialdeath.gd" id="6_big7o"]
 [ext_resource type="Texture2D" uid="uid://y2gem10tnu7i" path="res://assets/Art/RennFaire.png" id="7_6v1b5"]
@@ -53,6 +55,16 @@ size = Vector2(4858, 168)
 [node name="GameManager2" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_rpm7l")
+
+[node name="Img0056" type="Sprite2D" parent="."]
+position = Vector2(2178, -750)
+scale = Vector2(1.2474, 1.26204)
+texture = ExtResource("2_4o2hp")
+
+[node name="Img0057" type="Sprite2D" parent="."]
+position = Vector2(2156.5, 32.5)
+scale = Vector2(1.27109, 0.568056)
+texture = ExtResource("3_lumjg")
 
 [node name="RennFaire" type="Sprite2D" parent="."]
 position = Vector2(2182, -729)
