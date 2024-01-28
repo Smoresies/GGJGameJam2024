@@ -248,3 +248,26 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area):
 	print("player weapon hit")
+
+func _ready():
+	Dialogic.signal_event.connect(_on_dialogic_signal)
+	Dialogic.timeline_started.connect(_on_timeline_started)
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	
+func _on_dialogic_signal(argument:String): #Note, this signal/function is being kicked off while the Dialogic scene is still running. Notable for avoiding conflict with the pause-for-dialogue implementation.
+	if argument == "combat_won":
+		pass
+	#Combat Won Logic Here
+	if argument == "combat_lost":
+		pass
+	#Combat Lost Logic Here
+
+var inDialogue: bool = false
+
+func _on_timeline_started():
+	inDialogue = true
+	#Pausing logic for when dialogue scene starts
+
+func _on_timeline_ended():
+	inDialogue = false
+	#Unpausing logic for when dialogue scene ends
