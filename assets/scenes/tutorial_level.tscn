@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=21 format=3 uid="uid://cyocad6w3qxb0"]
 
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_rpm7l"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
 [ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="5_qvla3"]
+[ext_resource type="Script" path="res://assets/scenes/tutorialdeath.gd" id="6_big7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
 size = Vector2(2208, 44)
@@ -35,6 +36,18 @@ size = Vector2(566, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryuoh"]
 size = Vector2(173.5, 776)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_felua"]
+size = Vector2(276, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41fgv"]
+size = Vector2(4745, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_autpg"]
+size = Vector2(90.5, 851)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nt6t"]
+size = Vector2(4858, 168)
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -129,4 +142,38 @@ shape = SubResource("RectangleShape2D_ryuoh")
 [node name="PauseMenu" parent="TutorialLevel/CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("5_qvla3")]
 game_manager = NodePath("../../..")
 
+[node name="Barriers" type="Node" parent="TutorialLevel"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TutorialLevel/Barriers"]
+position = Vector2(2, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/Barriers/StaticBody2D"]
+position = Vector2(-149, -290)
+shape = SubResource("RectangleShape2D_felua")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="TutorialLevel/Barriers"]
+position = Vector2(2, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/Barriers/StaticBody2D2"]
+position = Vector2(2371.5, -720.5)
+shape = SubResource("RectangleShape2D_41fgv")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="TutorialLevel/Barriers"]
+position = Vector2(2, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/Barriers/StaticBody2D3"]
+position = Vector2(4595.75, -345)
+shape = SubResource("RectangleShape2D_autpg")
+
+[node name="DeathBound" type="Area2D" parent="TutorialLevel/Barriers"]
+position = Vector2(2, 613)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("6_big7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/Barriers/DeathBound"]
+position = Vector2(2107, 317)
+shape = SubResource("RectangleShape2D_5nt6t")
+
 [connection signal="body_entered" from="TutorialLevel/Area2D" to="TutorialLevel/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="TutorialLevel/Barriers/DeathBound" to="TutorialLevel/Barriers/DeathBound" method="_on_body_entered"]

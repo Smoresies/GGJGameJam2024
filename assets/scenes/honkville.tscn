@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://8hfblc60amow"]
+[gd_scene load_steps=24 format=3 uid="uid://8hfblc60amow"]
 
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_1sf8y"]
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_egwfh"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="2_jhtfd"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="4_c6hiq"]
+[ext_resource type="Script" path="res://assets/scenes/death_zone.gd" id="5_nrnja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhavs"]
 size = Vector2(899.5, 37)
@@ -49,6 +50,15 @@ size = Vector2(524.5, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndjq3"]
 size = Vector2(928.5, 247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_viqiv"]
+size = Vector2(210, 654)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1u0m"]
+size = Vector2(9239.5, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2awx"]
+size = Vector2(627.5, 889)
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -165,3 +175,38 @@ shape = SubResource("RectangleShape2D_ndjq3")
 
 [node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_c6hiq")]
 game_manager = NodePath("../..")
+
+[node name="Barriers" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Barriers"]
+position = Vector2(-566, -76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/StaticBody2D"]
+position = Vector2(462, 401)
+shape = SubResource("RectangleShape2D_viqiv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Barriers"]
+position = Vector2(-566, -76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/StaticBody2D2"]
+position = Vector2(5151, -114)
+shape = SubResource("RectangleShape2D_t1u0m")
+
+[node name="DeathZone" type="Area2D" parent="Barriers"]
+position = Vector2(-566, -76)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("5_nrnja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/DeathZone"]
+position = Vector2(5249, 1005)
+shape = SubResource("RectangleShape2D_t1u0m")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Barriers"]
+position = Vector2(-566, -76)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/StaticBody2D3"]
+position = Vector2(10089, 285)
+shape = SubResource("RectangleShape2D_d2awx")
+
+[connection signal="body_entered" from="Barriers/DeathZone" to="Barriers/DeathZone" method="_on_body_entered"]
