@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://g285ji41wqus"]
+[gd_scene load_steps=8 format=3 uid="uid://g285ji41wqus"]
 
 [ext_resource type="Script" path="res://src/game/pause_menu.gd" id="1_i0fg1"]
+[ext_resource type="AudioStream" uid="uid://dvenjh6xlse4h" path="res://assets/Audio/SFX/sfx_ui_pausemenu_pause.wav" id="2_ee46t"]
+[ext_resource type="AudioStream" uid="uid://gk8wibqjcn5p" path="res://assets/Audio/SFX/sfx_ui_pausemenu_quit.wav" id="3_5871t"]
+[ext_resource type="AudioStream" uid="uid://c7wh2nyugw5nn" path="res://assets/Audio/SFX/sfx_ui_pausemenu_resume.wav" id="4_fcll2"]
+[ext_resource type="AudioStream" uid="uid://chfeaxohyj7hp" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover.wav" id="5_auqrh"]
+[ext_resource type="AudioStream" uid="uid://crheaaj5fxdbu" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonclick.wav" id="6_8vdf1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qqgmm"]
+streams_count = 1
+stream_0/stream = ExtResource("5_auqrh")
+stream_0/weight = 1.0
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -53,6 +63,31 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="sfx_ui_pausemenu_pause" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_ee46t")
+
+[node name="sfx_ui_pausemenu_quit" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_5871t")
+
+[node name="sfx_ui_pausemenu_resume" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_fcll2")
+
+[node name="sfx_mainmenu_buttonhover" type="AudioStreamPlayer" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_qqgmm")
+volume_db = -14.054
+pitch_scale = 1.1
+
+[node name="sfx_mainmenu_buttonclick" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_8vdf1")
+
+[connection signal="mouse_entered" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="finished" from="Audio/sfx_ui_pausemenu_quit" to="." method="_on_sfx_ui_pausemenu_quit_finished"]
+[connection signal="finished" from="Audio/sfx_ui_pausemenu_resume" to="." method="_on_sfx_ui_pausemenu_resume_finished"]
+[connection signal="finished" from="Audio/sfx_mainmenu_buttonclick" to="." method="_on_sfx_mainmenu_buttonclick_finished"]

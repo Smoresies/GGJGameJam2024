@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c5bd2272m5wwu"
+path="res://.godot/imported/01 Dear Teeny Tiny Diary.ogg-d4d970c5a1e45b341f62018c101c689a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Music/01 Dear Teeny Tiny Diary.ogg"
+dest_files=["res://.godot/imported/01 Dear Teeny Tiny Diary.ogg-d4d970c5a1e45b341f62018c101c689a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
