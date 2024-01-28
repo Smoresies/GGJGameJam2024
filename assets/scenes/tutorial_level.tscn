@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=22 format=3 uid="uid://cyocad6w3qxb0"]
 
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_rpm7l"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="5_qvla3"]
 [ext_resource type="Script" path="res://assets/scenes/tutorialdeath.gd" id="6_big7o"]
+[ext_resource type="Texture2D" uid="uid://y2gem10tnu7i" path="res://assets/Art/RennFaire.png" id="7_6v1b5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
 size = Vector2(2208, 44)
@@ -52,6 +53,11 @@ size = Vector2(4858, 168)
 [node name="GameManager2" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_rpm7l")
+
+[node name="RennFaire" type="Sprite2D" parent="."]
+position = Vector2(2182, -729)
+scale = Vector2(1.275, 1.275)
+texture = ExtResource("7_6v1b5")
 
 [node name="TutorialLevel" type="Node2D" parent="."]
 process_mode = 1
@@ -122,7 +128,7 @@ position = Vector2(4331, 68)
 shape = SubResource("RectangleShape2D_rfeqq")
 
 [node name="Player" parent="TutorialLevel" instance=ExtResource("1_swf5b")]
-position = Vector2(286, 178)
+position = Vector2(153, 503)
 
 [node name="Camera" parent="TutorialLevel" node_paths=PackedStringArray("PLAYER") instance=ExtResource("2_6bey5")]
 PLAYER = NodePath("../Player")
