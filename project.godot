@@ -17,9 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-<<<<<<< HEAD
 SceneManager="*res://assets/scenes/scene_manager.tscn"
-=======
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -34,7 +32,6 @@ directories/dtl_directory={
 layout/style_list=["res://assets/dialogic/DefaultStyle.tres"]
 layout/default_style="res://assets/dialogic/DefaultStyle.tres"
 glossary/default_case_sensitive=true
->>>>>>> ReDialogue(BrickWallHeadBashing)
 
 [display]
 
@@ -72,7 +69,6 @@ jump={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"echo":false,"script":null)
 ]
 }
-<<<<<<< HEAD
 Flutter={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(189, 8),"global_position":Vector2(193, 49),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
@@ -84,7 +80,6 @@ Flutter={
 2d_physics/layer_1="environment"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
-=======
 dialogic_default_action={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
@@ -94,7 +89,6 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
->>>>>>> ReDialogue(BrickWallHeadBashing)
 
 [rendering]
 
