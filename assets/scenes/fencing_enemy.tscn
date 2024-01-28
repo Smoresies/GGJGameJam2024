@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://rdchyi7a67oe"]
+[gd_scene load_steps=8 format=3 uid="uid://c42kh5yv6xd1m"]
 
-[ext_resource type="Script" path="res://src/player/player_controller.gd" id="1_bxxnf"]
-[ext_resource type="Texture2D" uid="uid://caiasupofj8vv" path="res://assets/testAnimation/guy_arm.png" id="3_a3x0y"]
-[ext_resource type="Texture2D" uid="uid://b3pw0q04ursyf" path="res://assets/testAnimation/guy_body_1.png" id="4_6lvsy"]
-[ext_resource type="Texture2D" uid="uid://b85dvfhcey2cn" path="res://assets/testAnimation/guy_body_2.png" id="5_0l2l2"]
+[ext_resource type="Script" path="res://src/Enemy/FencingEnemy.gd" id="1_bhy0j"]
+[ext_resource type="Texture2D" uid="uid://caiasupofj8vv" path="res://assets/testAnimation/guy_arm.png" id="2_dk5b6"]
+[ext_resource type="Texture2D" uid="uid://b3pw0q04ursyf" path="res://assets/testAnimation/guy_body_1.png" id="3_d860e"]
+[ext_resource type="Texture2D" uid="uid://b85dvfhcey2cn" path="res://assets/testAnimation/guy_body_2.png" id="4_pga6d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmnpf"]
 radius = 31.0
@@ -15,23 +15,19 @@ height = 124.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_6lvsy")
+"texture": ExtResource("3_d860e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_0l2l2")
+"texture": ExtResource("4_pga6d")
 }],
 "loop": true,
 "name": &"TestIdleAnimation",
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-script = ExtResource("1_bxxnf")
-AIR_ACCEL = 800
-FENCING_LUNGE_SPEED = 1500
-FENCING_HOP_SPEED = 200
-FLY_ANIMATION = "TestIdleAnimation"
+[node name="FencingEnemy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_bhy0j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.959998, 1)
@@ -43,12 +39,12 @@ shape = SubResource("CapsuleShape2D_bmnpf")
 position = Vector2(0, -2)
 rotation = 0.961676
 scale = Vector2(2, 2)
-texture = ExtResource("3_a3x0y")
+texture = ExtResource("2_dk5b6")
 
 [node name="Area2D" type="Area2D" parent="Arm"]
 scale = Vector2(0.920001, 1)
-collision_layer = 2
-collision_mask = 4
+collision_layer = 16
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm/Area2D"]
 position = Vector2(66, -1)
