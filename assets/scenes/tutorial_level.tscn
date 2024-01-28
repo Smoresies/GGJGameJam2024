@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfh8epnpel4xq"]
+[gd_scene load_steps=12 format=3 uid="uid://cfh8epnpel4xq"]
 
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
-[ext_resource type="PackedScene" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
+[ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
-size = Vector2(2999, 44)
+size = Vector2(2208, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx835"]
+size = Vector2(888.5, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47dyc"]
 size = Vector2(97.5, 76)
@@ -21,6 +24,12 @@ size = Vector2(112, 170)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prygs"]
 size = Vector2(112, 94)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa0nq"]
+size = Vector2(325, 477)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfeqq"]
+size = Vector2(566, 99)
+
 [node name="TutorialLevel" type="Node2D"]
 
 [node name="BackgroundObjects" type="Node" parent="."]
@@ -29,8 +38,15 @@ size = Vector2(112, 94)
 position = Vector2(2, 613)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D"]
-position = Vector2(1489.5, 12)
+position = Vector2(1094, 12)
 shape = SubResource("RectangleShape2D_7esrx")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="BackgroundObjects"]
+position = Vector2(2, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D8"]
+position = Vector2(3223.75, 0)
+shape = SubResource("RectangleShape2D_gx835")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="BackgroundObjects"]
 position = Vector2(-76, 524)
@@ -66,6 +82,20 @@ position = Vector2(-76, 524)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D6"]
 position = Vector2(1401, 32)
 shape = SubResource("RectangleShape2D_prygs")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="BackgroundObjects"]
+position = Vector2(-76, 524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D7"]
+position = Vector2(2423.5, -114.5)
+shape = SubResource("RectangleShape2D_pa0nq")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="BackgroundObjects"]
+position = Vector2(-76, 524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D9"]
+position = Vector2(4331, 68)
+shape = SubResource("RectangleShape2D_rfeqq")
 
 [node name="Player" parent="." instance=ExtResource("1_swf5b")]
 position = Vector2(286, 178)
