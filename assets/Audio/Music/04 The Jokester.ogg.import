@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bq5frvnxffpt1"
+path="res://.godot/imported/04 The Jokester.ogg-f7ed915a42ed4ac2f6a4035a7f96dc0a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Music/04 The Jokester.ogg"
+dest_files=["res://.godot/imported/04 The Jokester.ogg-f7ed915a42ed4ac2f6a4035a7f96dc0a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

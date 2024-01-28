@@ -15,6 +15,11 @@ run/main_scene="res://assets/scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/output_latency=100
+driver/mix_rate=48000
+
 [autoload]
 
 SceneManager="*res://assets/scenes/scene_manager.tscn"
