@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=17 format=3 uid="uid://cyocad6w3qxb0"]
 
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_rpm7l"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
 [ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="5_qvla3"]
+[ext_resource type="AudioStream" uid="uid://btrc0ojjkjxf2" path="res://assets/Audio/Music/03 Take Flight.ogg" id="6_bfsnl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
 size = Vector2(2208, 44)
@@ -128,5 +129,11 @@ shape = SubResource("RectangleShape2D_ryuoh")
 
 [node name="PauseMenu" parent="TutorialLevel/CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("5_qvla3")]
 game_manager = NodePath("../../..")
+
+[node name="Audio" type="Node" parent="TutorialLevel"]
+
+[node name="music_level0" type="AudioStreamPlayer" parent="TutorialLevel/Audio"]
+stream = ExtResource("6_bfsnl")
+autoplay = true
 
 [connection signal="body_entered" from="TutorialLevel/Area2D" to="TutorialLevel/Area2D" method="_on_body_entered"]

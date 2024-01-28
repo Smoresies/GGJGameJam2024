@@ -1,18 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq52ajbqcbdul"]
+[gd_scene load_steps=11 format=3 uid="uid://dq52ajbqcbdul"]
 
 [ext_resource type="Script" path="res://src/game/main_menu.gd" id="1_kcjal"]
 [ext_resource type="AudioStream" uid="uid://c5bd2272m5wwu" path="res://assets/Audio/Music/01 Dear Teeny Tiny Diary.ogg" id="2_w6r4f"]
-[ext_resource type="AudioStream" uid="uid://bnrt4h6it8djl" path="res://assets/Audio/SFX/sfx_ui_mainmenu_play.wav" id="3_mo32o"]
-[ext_resource type="AudioStream" uid="uid://chfeaxohyj7hp" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover.wav" id="4_ype6g"]
+[ext_resource type="AudioStream" uid="uid://c0tjvlins6slx" path="res://assets/Audio/SFX/sfx_ui_mainmenu_play_v2.wav" id="3_kpy1k"]
+[ext_resource type="AudioStream" uid="uid://htpnlhvvuq14" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover_v1.wav" id="4_xkpr1"]
+[ext_resource type="AudioStream" uid="uid://d4d5us1ymyjx2" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover_v2.wav" id="5_1llbb"]
 [ext_resource type="AudioStream" uid="uid://di8wbughi20yt" path="res://assets/Audio/SFX/sfx_ui_mainmenu_opening.wav" id="5_i8cpw"]
 [ext_resource type="AudioStream" uid="uid://bgifg66ssmwgx" path="res://assets/Audio/SFX/sfx_ui_mainmenu_quit.wav" id="6_4cx4w"]
+[ext_resource type="AudioStream" uid="uid://bg7fpk851ar7g" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover_v3.wav" id="6_rt34p"]
 [ext_resource type="AudioStream" uid="uid://crheaaj5fxdbu" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonclick.wav" id="7_gl0g5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dimv8"]
+playback_mode = 1
 random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("4_ype6g")
+streams_count = 3
+stream_0/stream = ExtResource("4_xkpr1")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_1llbb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_rt34p")
+stream_2/weight = 1.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -78,28 +85,37 @@ text = "Quit
 
 [node name="music_mainmenu" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_w6r4f")
+autoplay = true
 bus = &"Music"
 
 [node name="sfx_ui_mainmenu_play" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("3_mo32o")
+stream = ExtResource("3_kpy1k")
+volume_db = -9.369
+bus = &"SFX"
 
 [node name="sfx_ui_mainmenu_buttonhover" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_dimv8")
-volume_db = -14.055
+volume_db = -22.0
 max_polyphony = 4
+bus = &"SFX"
 
 [node name="sfx_ui_mainmenu_opening" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_i8cpw")
-volume_db = -11.243
+volume_db = -12.0
+autoplay = true
+bus = &"SFX"
 
 [node name="sfx_ui_mainmenu_quit" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_4cx4w")
+bus = &"SFX"
 
 [node name="sfx_ui_mainmenu_buttonclick" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_gl0g5")
+bus = &"SFX"
 
 [node name="sfx_ui_mainmenu_credits" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_gl0g5")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="Panel/VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
@@ -110,4 +126,5 @@ stream = ExtResource("7_gl0g5")
 [connection signal="finished" from="Audio/sfx_ui_mainmenu_play" to="." method="_on_sfx_ui_mainmenu_play_finished"]
 [connection signal="finished" from="Audio/sfx_ui_mainmenu_opening" to="." method="_on_sfx_ui_mainmenu_opening_finished"]
 [connection signal="finished" from="Audio/sfx_ui_mainmenu_quit" to="." method="_on_sfx_ui_mainmenu_quit_finished"]
+[connection signal="finished" from="Audio/sfx_ui_mainmenu_buttonclick" to="." method="_on_sfx_ui_mainmenu_buttonclick_finished"]
 [connection signal="finished" from="Audio/sfx_ui_mainmenu_credits" to="." method="_on_sfx_ui_mainmenu_credits_finished"]

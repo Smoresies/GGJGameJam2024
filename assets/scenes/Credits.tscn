@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbgoi4s2117e8"]
+[gd_scene load_steps=9 format=3 uid="uid://cbgoi4s2117e8"]
 
 [ext_resource type="Script" path="res://src/game/main_menu.gd" id="1_jm1w6"]
+[ext_resource type="AudioStream" uid="uid://fguyh036wokf" path="res://assets/Audio/Music/08 Adieu.ogg" id="2_wjk42"]
+[ext_resource type="AudioStream" uid="uid://htpnlhvvuq14" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover_v1.wav" id="3_q052i"]
+[ext_resource type="AudioStream" uid="uid://d4d5us1ymyjx2" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover_v2.wav" id="4_hynlv"]
+[ext_resource type="AudioStream" uid="uid://bg7fpk851ar7g" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonhover_v3.wav" id="5_q7oyb"]
+[ext_resource type="AudioStream" uid="uid://crheaaj5fxdbu" path="res://assets/Audio/SFX/sfx_ui_mainmenu_buttonclick.wav" id="6_nbbud"]
+[ext_resource type="AudioStream" uid="uid://bgifg66ssmwgx" path="res://assets/Audio/SFX/sfx_ui_mainmenu_quit.wav" id="7_oyu7q"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jproh"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("3_q052i")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_hynlv")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_q7oyb")
+stream_2/weight = 1.0
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -60,5 +77,27 @@ size_flags_horizontal = 4
 text = "Quit
 "
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="music_credits" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_wjk42")
+autoplay = true
+bus = &"Music"
+
+[node name="sfx_ui_mainmenu_buttonhover" type="AudioStreamPlayer" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_jproh")
+volume_db = -22.0
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="sfx_ui_mainmenu_buttonclick" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_nbbud")
+
+[node name="sfx_ui_mainmenu_quit" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_oyu7q")
+
+[connection signal="mouse_entered" from="Panel/VBoxContainer/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="Audio/sfx_ui_mainmenu_buttonclick" to="." method="_on_sfx_ui_mainmenu_buttonclick_finished"]
+[connection signal="finished" from="Audio/sfx_ui_mainmenu_quit" to="." method="_on_sfx_ui_mainmenu_quit_finished"]
