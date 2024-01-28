@@ -6,8 +6,8 @@ extends CharacterBody2D
 @export var STOP_SPEED = 300
 @export var AIR_ACCEL = 1000
 @export var AIR_DECEL = 2000
-@export var FLAP_FORCE = 2500
-@export var FLAP_GRAVITY_MOD = .7
+@export var FLUTTER_FORCE = 2500
+@export var FLUTTER_GRAVITY_MOD = .7
 
 @export var FENCING_LUNGE_COOLDOWN = .5
 @export var FENCING_LUNGE_SPEED = 650
@@ -29,9 +29,15 @@ extends CharacterBody2D
 
 @export var FLY_ANIMATION = "TestFlyAnimation"
 @export var IDLE_ANIMATION = "TestIdleAnimation"
+<<<<<<< Updated upstream
 @export var FLAP_ANIMATION = "TestIdleAnimation"
 @export var FENCING_ANIMATION = "TestFencingAnimation"
 @export var FALL_ANIMATION = "TestFencingAnimation"
+=======
+@export var FLUTTER_ANIMATION = "TestIdleAnimation"
+@export var FENCING_ANIMATION = "TestIdleAnimation"
+@export var FALL_ANIMATION = "TestIdleAnimation"
+>>>>>>> Stashed changes
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _arm = $Arm
@@ -41,7 +47,7 @@ enum STATES {
 	GROUNDED,
 	JUMPING,
 	FALLING,
-	FLAPPING,
+	FLUTTERING,
 	FENCING,
 }
 
@@ -91,12 +97,12 @@ func _set_state_falling():
 	_animated_sprite.play(FALL_ANIMATION)
 	_state = STATES.FALLING
 	
-func _set_state_flapping():
-	if _state == STATES.FLAPPING:
+func _set_state_fluttering():
+	if _state == STATES.FLUTTERING:
 		return
 	_set_state()
-	_animated_sprite.play(FLAP_ANIMATION)
-	_state = STATES.FLAPPING
+	_animated_sprite.play(FLUTTER_ANIMATION)
+	_state = STATES.FLUTTERING
 	
 func _set_state_jousting():
 	_set_state()
@@ -109,14 +115,13 @@ func _set_state():
 	_arm.position.y = 0
 	_animated_sprite.stop()
 	
-	
 func _process_arm(delta):
 	if MIN_GUST_SPEED < _ave_arm_speed and _ave_arm_speed < MAX_GUST_SPEED:
 		var arm_direction = Vector2.from_angle(_arm.rotation)
 		if velocity.y > 0:
-			velocity.y = 0
-		velocity -= arm_direction * FLAP_FORCE * delta
-		_set_state_flapping()
+			velocity.y  *= .1
+		velocity -= arm_direction * FLUTTER_FORCE * delta
+		_set_state_fluttering()
 
 func _process_state_grounded(delta):
 	if not is_on_floor():
@@ -158,7 +163,7 @@ func _process_state_jumping(delta):
 		
 	_clamp_speed()
 	
-func _process_state_flapping(delta):
+func _process_state_fluttering(delta):
 	if is_on_floor():
 		_set_state_grounded()
 		return
@@ -174,7 +179,7 @@ func _process_state_flapping(delta):
 		else:
 			velocity.x += xinput * AIR_ACCEL * delta
 		
-	velocity.y += _get_gravity(velocity.y) * delta * FLAP_GRAVITY_MOD
+	velocity.y += _get_gravity(velocity.y) * delta * FLUTTER_GRAVITY_MOD
 	_rotate_feather(delta, _state_timer)
 	_process_arm(delta)
 	
@@ -226,8 +231,8 @@ func _physics_process(delta):
 	elif _state == STATES.FALLING:
 		_process_state_falling(delta)
 		
-	elif _state == STATES.FLAPPING:
-		_process_state_flapping(delta)
+	elif _state == STATES.FLUTTERING:
+		_process_state_fluttering(delta)
 		
 	elif _state == STATES.FENCING:
 		_process_state_fencing(delta)

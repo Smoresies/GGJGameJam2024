@@ -28,6 +28,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_bxxnf")
+AIR_ACCEL = 800
 FLY_ANIMATION = "TestIdleAnimation"
 FENCING_ANIMATION = "TestIdleAnimation"
 
