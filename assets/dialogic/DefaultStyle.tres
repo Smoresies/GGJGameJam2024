@@ -62,4 +62,4 @@ base_overrides = {
 "global_font": "\"res://assets/UI/ShantellSans[BNCE,INFM,SPAC,ital,wght].ttf\""
 }
 layers = Array[ExtResource("2_yknx1")]([SubResource("Resource_mgggs"), SubResource("Resource_cgt7h"), SubResource("Resource_vp26q"), SubResource("Resource_8r6lt"), SubResource("Resource_mdecg"), SubResource("Resource_1pr8u"), SubResource("Resource_j5i14"), SubResource("Resource_mvipl")])
-metadata/_latest_layer = 7
+metadata/_latest_layer = 0

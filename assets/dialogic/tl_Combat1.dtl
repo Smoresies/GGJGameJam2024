@@ -1,0 +1,54 @@
+Quill stands face to face with the towering clown blocking his way. Behind the clown is the way to the Clown Mafia Boss' quarters.
+c_Quille: (If I catch this brute off guard, I'll be able to lay him low. Mayhaps a barbed insult will surpass his defenses?)
+c_Clown: Huh? Why the long face little guy?
+set {GoodJokes} = 0
+set {BadJokes} = 0
+set {Joke1Selected} = "false"
+set {Joke2Selected} = "false"
+set {Joke3Selected} = "false"
+set {Joke4Selected} = "false"
+label JokeTime
+Pick an Insult!
+- I couldn't bother to spare a rotten tomato for your banal humor... good thing there's already one affixed to your face! [if {Joke1Selected} == "false"][else="hide"]
+	set {Joke1Selected} = "true"
+	c_Clown: That's not a tomato! It's my nose! And the audience loves me! My jokes are fresh and fun!
+	You see a slight reddening under the clown's makeup. He seems to be self-conscious about his jokes.
+	set {GoodJokes} += 1
+	if {GoodJokes} == 2:
+		jump Victory
+	jump JokeTime
+- Methink’st thou art a puerile, insipid jackanape! [if {Joke2Selected} == "false"][else="hide"]
+	set {Joke2Selected} = "true"
+	What are you saying? What does "puerile" even mean? I do consider myself an artist though, so... thanks?
+	The clown appears unfazed.
+	set {BadJokes} += 1
+	if {BadJokes} == 2:
+		jump Defeat
+	jump JokeTime
+- Your smile looks like a broken baguette! [if {Joke3Selected} == "false"][else="hide"]
+	set {Joke3Selected} = "true"
+	c_Clown: Wha?! No it doesn't! The boss says I have a perfect banana smile!
+	The clown's grin falters. This seems to be a sensitive subject for him.
+	set {GoodJokes} += 1
+	if {GoodJokes} == 2:
+		jump Victory
+	jump JokeTime
+- Your mother was a hamster, and your father smelt like Elderberries! [if {Joke4Selected} == "false"][else="hide"]
+	set {Joke4Selected} = "true"
+	c_Clown: You're just quoting movies at me now? Get some original content, you hack!
+	The clown appears unfazed.
+	set {BadJokes} += 1
+	if {BadJokes} == 2:
+		jump Defeat
+	jump JokeTime
+label Victory
+c_Quille: EN GARDE!
+Taking advantage of the clown's dismay at being so cleverly insulted, Quille gets in close and tickles the goon with his feather.
+The mobster collapses in a fit of giggles\: laid low and shamefully forced to break character.
+[signal arg="combat_won"]
+[end_timeline]
+label Defeat
+c_Clown: Lights out little guy!
+The clown's grin widens. He lifts his squeaky hammer aloft and brings it down on Quill's head.
+[signal arg="combat_lost"]
+[end_timeline]

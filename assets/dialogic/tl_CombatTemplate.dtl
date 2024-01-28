@@ -1,0 +1,50 @@
+Quill stands face to face with the clown blocking his way.
+c_Clown: Why the long face?
+set {GoodJokes} = 0
+set {BadJokes} = 0
+set {Joke1Selected} = "false"
+set {Joke2Selected} = "false"
+set {Joke3Selected} = "false"
+set {Joke4Selected} = "false"
+label JokeTime
+Pick an Insult!
+- Good Joke 1 [if {Joke1Selected} == "false"][else="hide"]
+	set {Joke1Selected} = "true"
+	That was a Good Joke.
+	set {GoodJokes} += 1
+	if {GoodJokes} == 2:
+		jump Victory
+	jump JokeTime
+- Bad Joke 1 [if {Joke2Selected} == "false"][else="hide"]
+	set {Joke2Selected} = "true"
+	That was a Bad Joke.
+	set {BadJokes} += 1
+	if {BadJokes} == 2:
+		jump Defeat
+	jump JokeTime
+- Good Joke 2 [if {Joke3Selected} == "false"][else="hide"]
+	set {Joke3Selected} = "true"
+	That was a Good Joke.
+	set {GoodJokes} += 1
+	if {GoodJokes} == 2:
+		jump Victory
+	jump JokeTime
+- Bad Joke 2 [if {Joke4Selected} == "false"][else="hide"]
+	set {Joke4Selected} = "true"
+	That was a Bad Joke.
+	set {BadJokes} += 1
+	if {BadJokes} == 2:
+		jump Defeat
+	jump JokeTime
+label Victory
+c_Quille: EN GARDE!
+Taking advantage of the clown's dismay at being so cleverly insulted, Quille gets in close and tickles the goon with his feather.
+The mobster collapses in a fit of giggles.
+[signal arg="combat_won"]
+[end_timeline]
+label Defeat
+Unfazed, the clown's grin widens. He snatches the feather from Quille's hands.
+c_Quille: What are you-? No! Nooooooohohoho!!!
+The clown relentlessly tickles Quille with the feather. Quille collapses in a fit of giggles, shamefully laid low\: forced to break his stoic character.
+[signal arg="combat_lost"]
+[end_timeline]
