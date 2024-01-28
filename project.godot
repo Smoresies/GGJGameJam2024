@@ -23,15 +23,45 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"char_ClownBoss": "res://assets/dialogic/char_ClownBoss.dch",
-"char_Quille": "res://assets/dialogic/char_Quille.dch"
+"c_Clown": "res://assets/dialogic/char_ChuckledownBim.dch",
+"c_ClownBoss": "res://assets/dialogic/char_ClownBoss.dch",
+"c_Quille": "res://assets/dialogic/char_Quille.dch"
 }
 directories/dtl_directory={
-"tl_Test": "res://assets/dialogic/tl_Test.dtl"
+"t_Combat1": "res://assets/dialogic/tl_Combat1.dtl",
+"t_CombatTemplate": "res://assets/dialogic/tl_CombatTemplate.dtl",
+"t_Finale": "res://assets/dialogic/tl_Finale.dtl",
+"t_Flight": "res://assets/dialogic/t_Flight.dtl",
+"t_Opening": "res://assets/dialogic/tl_Opening.dtl",
+"t_Test": "res://assets/dialogic/tl_Test.dtl"
 }
 layout/style_list=["res://assets/dialogic/DefaultStyle.tres"]
 layout/default_style="res://assets/dialogic/DefaultStyle.tres"
 glossary/default_case_sensitive=true
+variables={
+"BadJokes": 0.0,
+"GoodJokes": 0.0,
+"Joke1Selected": "false",
+"Joke2Selected": "false",
+"Joke3Selected": "false",
+"Joke4Selected": "false"
+}
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/join_default_wait=true
+choices/autofocus_first=false
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
 
 [display]
 
@@ -67,6 +97,11 @@ jump={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"echo":false,"script":null)
+]
+}
+Flutter={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(189, 8),"global_position":Vector2(193, 49),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 dialogic_default_action={

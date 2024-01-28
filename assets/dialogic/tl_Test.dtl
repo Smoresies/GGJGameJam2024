@@ -1,6 +1,6 @@
 Exposition~
-join char_Quille 1
-char_Quille: MON DIEU!!
-join char_ClownBoss 1
-char_ClownBoss: Go HONK yourself!
+join c_Quille 1
+c_Quille: MON DIEU!!
+join c_ClownBoss 1
+c_ClownBoss: Go HONK yourself!
 [end_timeline]
