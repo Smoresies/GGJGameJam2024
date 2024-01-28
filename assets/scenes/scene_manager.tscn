@@ -5,6 +5,7 @@
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_x07dx")
 Scenes = {
+"Level1": &"res://assets/scenes/honkville.tscn",
 "TestLevel": &"res://assets/scenes/level_1.tscn",
 "TutorialLevel": &"res://assets/scenes/tutorial_level.tscn"
 }
