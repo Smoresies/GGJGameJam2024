@@ -29,15 +29,9 @@ extends CharacterBody2D
 
 @export var FLY_ANIMATION = "TestFlyAnimation"
 @export var IDLE_ANIMATION = "TestIdleAnimation"
-<<<<<<< Updated upstream
-@export var FLAP_ANIMATION = "TestIdleAnimation"
-@export var FENCING_ANIMATION = "TestFencingAnimation"
-@export var FALL_ANIMATION = "TestFencingAnimation"
-=======
 @export var FLUTTER_ANIMATION = "TestIdleAnimation"
 @export var FENCING_ANIMATION = "TestIdleAnimation"
 @export var FALL_ANIMATION = "TestIdleAnimation"
->>>>>>> Stashed changes
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _arm = $Arm
