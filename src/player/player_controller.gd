@@ -227,21 +227,21 @@ func _process_state_fencing(delta):
 
 func _physics_process(delta):
 	_state_timer += delta
-	
-	if _state == STATES.GROUNDED:
-		_process_state_grounded(delta)
-		
-	elif _state == STATES.JUMPING:
-		_process_state_jumping(delta)
-		
-	elif _state == STATES.FALLING:
-		_process_state_falling(delta)
-		
-	elif _state == STATES.FLUTTERING:
-		_process_state_fluttering(delta)
-		
-	elif _state == STATES.FENCING:
-		_process_state_fencing(delta)
+	if !inDialogue:
+		if _state == STATES.GROUNDED:
+			_process_state_grounded(delta)
+			
+		elif _state == STATES.JUMPING:
+			_process_state_jumping(delta)
+			
+		elif _state == STATES.FALLING:
+			_process_state_falling(delta)
+			
+		elif _state == STATES.FLUTTERING:
+			_process_state_fluttering(delta)
+			
+		elif _state == STATES.FENCING:
+			_process_state_fencing(delta)
 
 	move_and_slide()
 
@@ -265,6 +265,7 @@ func _on_dialogic_signal(argument:String): #Note, this signal/function is being 
 var inDialogue: bool = false
 
 func _on_timeline_started():
+	velocity = Vector2.ZERO
 	inDialogue = true
 	#Pausing logic for when dialogue scene starts
 
