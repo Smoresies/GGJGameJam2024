@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://8hfblc60amow"]
+[gd_scene load_steps=20 format=3 uid="uid://8hfblc60amow"]
 
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_1sf8y"]
+[ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_egwfh"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="2_jhtfd"]
+[ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="4_c6hiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhavs"]
 size = Vector2(899.5, 37)
@@ -48,108 +50,118 @@ size = Vector2(524.5, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndjq3"]
 size = Vector2(928.5, 247)
 
-[node name="Honkville" type="Node"]
+[node name="GameManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_egwfh")
 
-[node name="Camera" parent="." node_paths=PackedStringArray("PLAYER") instance=ExtResource("1_1sf8y")]
+[node name="Honkville" type="Node" parent="."]
+process_mode = 1
+
+[node name="Camera" parent="Honkville" node_paths=PackedStringArray("PLAYER") instance=ExtResource("1_1sf8y")]
 PLAYER = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("2_jhtfd")]
+[node name="Player" parent="Honkville" instance=ExtResource("2_jhtfd")]
 position = Vector2(83, 549)
 
-[node name="Backgrounds" type="Node" parent="."]
+[node name="Backgrounds" type="Node" parent="Honkville"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D"]
 position = Vector2(452.25, 636)
 shape = SubResource("RectangleShape2D_qhavs")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D2"]
 position = Vector2(1080, 513.5)
 shape = SubResource("RectangleShape2D_cxy6t")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D3"]
 position = Vector2(1453, 445.5)
 shape = SubResource("RectangleShape2D_sy6v4")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D4"]
 position = Vector2(1845, 392.875)
 shape = SubResource("RectangleShape2D_bms5s")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D5" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D5"]
 position = Vector2(2280, 214.5)
 shape = SubResource("RectangleShape2D_1bkxg")
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D6" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D6"]
 position = Vector2(2503.25, 630)
 shape = SubResource("RectangleShape2D_t8d3x")
 
-[node name="StaticBody2D7" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D7" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D7"]
 position = Vector2(2765, 420.5)
 shape = SubResource("RectangleShape2D_8g36h")
 
-[node name="StaticBody2D8" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D8" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D8"]
 position = Vector2(3771, 409)
 shape = SubResource("RectangleShape2D_8g36h")
 
-[node name="StaticBody2D9" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D9" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D9"]
 position = Vector2(4705.25, 565)
 shape = SubResource("RectangleShape2D_vohpv")
 
-[node name="StaticBody2D10" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D10" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D10"]
 position = Vector2(5673.5, 509)
 shape = SubResource("RectangleShape2D_p7ptt")
 
-[node name="StaticBody2D11" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D11" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D11"]
 position = Vector2(6159, 213)
 shape = SubResource("RectangleShape2D_mbu2g")
 
-[node name="StaticBody2D12" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D12" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D12"]
 position = Vector2(6510, 624)
 shape = SubResource("RectangleShape2D_04wgh")
 
-[node name="StaticBody2D13" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D13" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D13"]
 position = Vector2(6735, 384)
 shape = SubResource("RectangleShape2D_lc63m")
 
-[node name="StaticBody2D14" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D14" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D14"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D14"]
 position = Vector2(6352, 313)
 shape = SubResource("RectangleShape2D_nh6wy")
 
-[node name="StaticBody2D15" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D15" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D15"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D15"]
 position = Vector2(7668.75, 617)
 shape = SubResource("RectangleShape2D_232gd")
 
-[node name="StaticBody2D16" type="StaticBody2D" parent="Backgrounds"]
+[node name="StaticBody2D16" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/StaticBody2D16"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D16"]
 position = Vector2(8732.75, 541)
 shape = SubResource("RectangleShape2D_ndjq3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_c6hiq")]
+game_manager = NodePath("../..")

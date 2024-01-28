@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=16 format=3 uid="uid://cyocad6w3qxb0"]
 
+[ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_rpm7l"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
 [ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
+[ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="5_qvla3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
 size = Vector2(2208, 44)
@@ -34,87 +36,97 @@ size = Vector2(566, 99)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryuoh"]
 size = Vector2(173.5, 776)
 
-[node name="TutorialLevel" type="Node2D"]
+[node name="GameManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_rpm7l")
 
-[node name="BackgroundObjects" type="Node" parent="."]
+[node name="TutorialLevel" type="Node2D" parent="."]
+process_mode = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="BackgroundObjects" type="Node" parent="TutorialLevel"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(2, 613)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D"]
 position = Vector2(1094, 12)
 shape = SubResource("RectangleShape2D_7esrx")
 
-[node name="StaticBody2D8" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D8" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(2, 613)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D8"]
 position = Vector2(3223.75, 0)
 shape = SubResource("RectangleShape2D_gx835")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D2"]
 position = Vector2(668.25, 40)
 shape = SubResource("RectangleShape2D_47dyc")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D3"]
 position = Vector2(1069, 43)
 shape = SubResource("RectangleShape2D_bcn7e")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D4"]
 position = Vector2(1286, -9)
 shape = SubResource("RectangleShape2D_qgf3v")
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D5" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D5"]
 position = Vector2(2051, -7)
 shape = SubResource("RectangleShape2D_2pfr1")
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D6" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D6"]
 position = Vector2(1401, 32)
 shape = SubResource("RectangleShape2D_prygs")
 
-[node name="StaticBody2D7" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D7" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D7"]
 position = Vector2(2423.5, -114.5)
 shape = SubResource("RectangleShape2D_pa0nq")
 
-[node name="StaticBody2D9" type="StaticBody2D" parent="BackgroundObjects"]
+[node name="StaticBody2D9" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundObjects/StaticBody2D9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D9"]
 position = Vector2(4331, 68)
 shape = SubResource("RectangleShape2D_rfeqq")
 
-[node name="Player" parent="." instance=ExtResource("1_swf5b")]
+[node name="Player" parent="TutorialLevel" instance=ExtResource("1_swf5b")]
 position = Vector2(286, 178)
 
-[node name="Camera" parent="." node_paths=PackedStringArray("PLAYER") instance=ExtResource("2_6bey5")]
+[node name="Camera" parent="TutorialLevel" node_paths=PackedStringArray("PLAYER") instance=ExtResource("2_6bey5")]
 position = Vector2(-2, -3)
 PLAYER = NodePath("../Player")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="TutorialLevel"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_06kq4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/Area2D"]
 position = Vector2(4453.25, 255)
 shape = SubResource("RectangleShape2D_ryuoh")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="TutorialLevel"]
+
+[node name="PauseMenu" parent="TutorialLevel/CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("5_qvla3")]
+game_manager = NodePath("../../..")
+
+[connection signal="body_entered" from="TutorialLevel/Area2D" to="TutorialLevel/Area2D" method="_on_body_entered"]
