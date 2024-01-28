@@ -10,10 +10,8 @@ func _ready():
 	pass
 
 func _process(_delta):
-	
 	# keep the player within the specified area of the screen
 	var relative_pos = PLAYER.position.x - position.x
-	print(position.y)
 	if relative_pos < LEFT_BOUND:
 		position.x += relative_pos - LEFT_BOUND
 	elif relative_pos > RIGHT_BOUND:
