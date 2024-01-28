@@ -15,10 +15,6 @@ run/main_scene="res://assets/scenes/tutorial_level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
-[autoload]
-
-SceneManager="*res://assets/scenes/scene_manager.tscn"
-
 [display]
 
 window/stretch/mode="viewport"
