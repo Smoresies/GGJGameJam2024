@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://8hfblc60amow"]
+[gd_scene load_steps=26 format=3 uid="uid://8hfblc60amow"]
 
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_1sf8y"]
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_egwfh"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="2_jhtfd"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="4_c6hiq"]
 [ext_resource type="Script" path="res://assets/scenes/death_zone.gd" id="5_nrnja"]
+[ext_resource type="Script" path="res://src/game/level1switcher.gd" id="6_we6dk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhavs"]
 size = Vector2(899.5, 37)
@@ -59,6 +60,9 @@ size = Vector2(9239.5, 205)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2awx"]
 size = Vector2(627.5, 889)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1fwj"]
+size = Vector2(733, 1360)
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -209,4 +213,15 @@ position = Vector2(-566, -76)
 position = Vector2(10089, 285)
 shape = SubResource("RectangleShape2D_d2awx")
 
+[node name="LeaveLevel" type="Area2D" parent="Barriers"]
+position = Vector2(-566, -76)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("6_we6dk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/LeaveLevel"]
+position = Vector2(9606.5, 256)
+shape = SubResource("RectangleShape2D_n1fwj")
+
 [connection signal="body_entered" from="Barriers/DeathZone" to="Barriers/DeathZone" method="_on_body_entered"]
+[connection signal="body_entered" from="Barriers/LeaveLevel" to="Barriers/LeaveLevel" method="_on_body_entered"]
