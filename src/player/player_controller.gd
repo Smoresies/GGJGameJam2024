@@ -30,6 +30,7 @@ extends CharacterBody2D
 
 @export var FLY_ANIMATION = "TestFlyAnimation"
 @export var IDLE_ANIMATION = "TestIdleAnimation"
+@export var WALK_ANIMATION = "TestWalkAnimation"
 @export var FLUTTER_ANIMATION = "TestIdleAnimation"
 @export var FENCING_ANIMATION = "TestIdleAnimation"
 @export var FALL_ANIMATION = "TestIdleAnimation"
@@ -61,7 +62,8 @@ func _get_gravity(y_vel):
 	
 func _process(_delta):
 	# update body
-	_animated_sprite.flip_h = (get_global_mouse_position().x - position.x < 0)
+	#_animated_sprite.flip_h = (get_global_mouse_position().x - position.x < 0)
+	pass
 	
 func _rotate_feather(delta, timer):
 	# rotate the feather about the shoulder
@@ -109,7 +111,7 @@ func _set_state_jousting():
 func _set_state():
 	_state_timer = 0
 	_arm.position.x = 0
-	_arm.position.y = 0
+	_arm.position.y = 7
 	_animated_sprite.stop()
 	
 func _process_arm(delta):
@@ -133,8 +135,15 @@ func _process_state_grounded(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var xinput = Input.get_axis("left", "right")
 	if xinput:
+		if _animated_sprite.animation == IDLE_ANIMATION:
+			_animated_sprite.stop()
+			_animated_sprite.play(WALK_ANIMATION)
+			
 		velocity.x = xinput * GROUND_SPEED
 	else:
+		if _animated_sprite.animation == WALK_ANIMATION:
+			_animated_sprite.stop()
+			_animated_sprite.play(IDLE_ANIMATION)
 		velocity.x = move_toward(velocity.x, 0, STOP_SPEED)
 		
 	_rotate_feather(delta, _state_timer)
