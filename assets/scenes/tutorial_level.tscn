@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=14 format=3 uid="uid://cyocad6w3qxb0"]
 
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
+[ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
 size = Vector2(2208, 44)
@@ -29,6 +30,9 @@ size = Vector2(325, 477)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfeqq"]
 size = Vector2(566, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryuoh"]
+size = Vector2(173.5, 776)
 
 [node name="TutorialLevel" type="Node2D"]
 
@@ -103,3 +107,14 @@ position = Vector2(286, 178)
 [node name="Camera" parent="." node_paths=PackedStringArray("PLAYER") instance=ExtResource("2_6bey5")]
 position = Vector2(-2, -3)
 PLAYER = NodePath("../Player")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_06kq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4453.25, 255)
+shape = SubResource("RectangleShape2D_ryuoh")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
