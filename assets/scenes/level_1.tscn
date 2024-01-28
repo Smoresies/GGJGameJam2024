@@ -2,10 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_8ggq5"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_iu4k5"]
+[ext_resource type="PackedScene" path="res://assets/scenes/DialogueTrigger.tscn" id="3_o6q46"]
 [ext_resource type="PackedScene" uid="uid://b0hk73geu0cl0" path="res://assets/scenes/fencing_trigger.tscn" id="4_kgnqq"]
-[ext_resource type="Script" path="res://src/camera/camera_controller.gd" id="3_41w7s"]
-[ext_resource type="PackedScene" uid="uid://kop4pnbgaxo7" path="res://assets/scenes/DialogueTrigger.tscn" id="3_o6q46"]
-[ext_resource type="PackedScene" uid="uid://dokparb45duvc" path="res://assets/scenes/gust.tscn" id="3_qidio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87tga"]
 
@@ -180,16 +178,16 @@ texture = SubResource("CanvasTexture_wv71j")
 position = Vector2(-14, -82)
 scale = Vector2(3.72705, 168.365)
 shape = SubResource("RectangleShape2D_87tga")
-[node name="DialogueTrigger" parent="." instance=ExtResource("3_o6q46")]
-position = Vector2(674, 384)
-scale = Vector2(2.06564, 11.4801)
-
-[node name="GustPool" type="Node" parent="."]
-
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D19"]
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_wv71j")
+
+[node name="DialogueTrigger" parent="." instance=ExtResource("3_o6q46")]
+position = Vector2(799, 384)
+scale = Vector2(2.06564, 11.4801)
+
+[node name="GustPool" type="Node" parent="."]
 
 [node name="FencingTrigger" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_kgnqq")]
 position = Vector2(2321, 498)
