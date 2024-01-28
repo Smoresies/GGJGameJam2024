@@ -1,0 +1,31 @@
+The room is smoky and dimly lit. Squares of confetti lie scattered on the ground. At the far end, a squat figure sits behind a large desk.
+c_Quille: Are you the leader of this band of brigands?! I demand you return mon beau!
+The figure at the desk shifts, causing light to glint off the muzzle of the handgun they have trained on Quille. The babyfaced man's chin doesn't even clear the desktop, and his stubby hand can barely hold onto the small gun.
+c_ClownBoss: All things in good time, little sword man. But first, I have an offer that I think you'll want to listen to.
+c_Quille: I shall never accept anything from you!
+c_ClownBoss: Don't be so quick to judge. I think you'll see we have more in common than you think. You see, we're both just silly little guys.
+c_Quille: The AUDACITY! I'm a noble fencer, not some low-brow street performer! I would never debase myself to be a source of comedy!
+c_ClownBoss: Oh, but you already have. All of your outrageous flapping around has been peak physical comedy!
+c_Quille: That was naught but necessity to navigate your labyrinthine streets!
+c_ClownBoss: You tickled my strongest guy so hard he's still splitting his sides laughing.
+c_Quille: There was no other way to get past him!
+c_ClownBoss: And you're so dedicated to the bit! You haven't broken character even once, despite all the ridiculous things you say and do.
+c_Quille: Slander of the highest degree!
+c_ClownBoss: Me and the guys have been laughing nonstop watching you work! Face it little guy,you're already a source of comedy.
+c_Quille: No... No! It can't be!
+c_ClownBoss: Why don't you join us? Just be a silly little guy. You'd hardly have to change a thing, just put on a clown nose and we're in business!
+c_ClownBoss: Of course you can just go back to your little ren faire, travelling from town to town and barely scraping by. But if you ask me, a comedian of your calibre deserves to be recognized.
+c_ClownBoss: So what do you say little guy? Wanna get silly?
+The mob boss puts down the gun, and pulls out two items from behind the desk\: a bright red clown nose, and a well-loved fencing sword.
+- Take the Sword
+	c_Quille: I refuse to be degraded like this any longer. Mon beau and mineself shall be departing.
+	Quille returns to the Ren Faire, but his thoughts keep returning to the words of the Clown Mafia's boss.
+	Is it true? Could he really be?
+	A silly little guy?
+	c_Quille: Verily absurd. Utterly inconcievable.
+	[end_timeline]
+- Take the Clown Nose
+	c_Quille: Loathe as I am to admit it... I cannot deny the harsh truth to your words.
+	Quille accepts the offered position within the Clown Mafia. He finds his efforts appreciated in a way they never were at the Ren Faire. Soon enough, he relishes in the laughter and joy he brings the people of Honkville.
+	In the end, Quille finds himself living his best life, as a silly little guy.
+	[end_timeline]
