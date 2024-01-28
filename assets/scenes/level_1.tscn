@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_8ggq5"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_iu4k5"]
-[ext_resource type="PackedScene" path="res://assets/scenes/DialogueTrigger.tscn" id="3_o6q46"]
+[ext_resource type="PackedScene" uid="uid://dw37qie66yod2" path="res://assets/scenes/DialogueTrigger.tscn" id="3_o6q46"]
 [ext_resource type="PackedScene" uid="uid://b0hk73geu0cl0" path="res://assets/scenes/fencing_trigger.tscn" id="4_kgnqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87tga"]
@@ -184,7 +184,7 @@ scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_wv71j")
 
 [node name="DialogueTrigger" parent="." instance=ExtResource("3_o6q46")]
-position = Vector2(799, 384)
+position = Vector2(1178, 292)
 scale = Vector2(2.06564, 11.4801)
 
 [node name="GustPool" type="Node" parent="."]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://kop4pnbgaxo7"]
+[gd_scene load_steps=3 format=3 uid="uid://dw37qie66yod2"]
 
 [ext_resource type="Script" path="res://src/DialogueTriggerScript.gd" id="1_dor6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulgwu"]
 
 [node name="DialogueTrigger" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_dor6m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
