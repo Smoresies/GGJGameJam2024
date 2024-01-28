@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/player/player_controller.gd" id="1_bxxnf"]
 [ext_resource type="Texture2D" uid="uid://c1wfdy26oc0o1" path="res://assets/Art/arm.png" id="2_s0n6e"]
 [ext_resource type="Texture2D" uid="uid://cd3nha5b1yqxa" path="res://assets/Art/Walking_sprites.png" id="3_xapl8"]
+[ext_resource type="Texture2D" uid="uid://5agextqf4m4a" path="res://assets/Art/jump_sprites.png" id="4_y2dds"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmnpf"]
 radius = 31.0
@@ -18,49 +19,45 @@ region = Rect2(467, 475, 467, 475)
 atlas = ExtResource("3_xapl8")
 region = Rect2(1401, 475, 467, 475)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dyvbk"]
-atlas = ExtResource("3_xapl8")
-region = Rect2(0, 475, 467, 475)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4ktq"]
-atlas = ExtResource("3_xapl8")
-region = Rect2(934, 475, 467, 475)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1qbq"]
+atlas = ExtResource("4_y2dds")
+region = Rect2(0, 0, 467, 475)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5t5b3"]
 atlas = ExtResource("3_xapl8")
 region = Rect2(0, 0, 467, 475)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nid6r"]
-atlas = ExtResource("3_xapl8")
-region = Rect2(467, 0, 467, 475)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_br0ub"]
-atlas = ExtResource("3_xapl8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1g05"]
+atlas = ExtResource("4_y2dds")
 region = Rect2(0, 0, 467, 475)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ilk0r"]
-atlas = ExtResource("3_xapl8")
-region = Rect2(467, 0, 467, 475)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3fwbj"]
-atlas = ExtResource("3_xapl8")
-region = Rect2(934, 0, 467, 475)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8tro"]
-atlas = ExtResource("3_xapl8")
-region = Rect2(1401, 0, 467, 475)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_83h3v"]
-atlas = ExtResource("3_xapl8")
-region = Rect2(0, 475, 467, 475)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp2vs"]
 atlas = ExtResource("3_xapl8")
 region = Rect2(467, 475, 467, 475)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_br0ub"]
+atlas = ExtResource("3_xapl8")
+region = Rect2(0, 0, 467, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83h3v"]
+atlas = ExtResource("3_xapl8")
+region = Rect2(0, 475, 467, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8tro"]
+atlas = ExtResource("3_xapl8")
+region = Rect2(1401, 0, 467, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fwbj"]
+atlas = ExtResource("3_xapl8")
+region = Rect2(934, 0, 467, 475)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g46rd"]
 atlas = ExtResource("3_xapl8")
 region = Rect2(934, 475, 467, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilk0r"]
+atlas = ExtResource("3_xapl8")
+region = Rect2(467, 0, 467, 475)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5p6ji"]
 atlas = ExtResource("3_xapl8")
@@ -86,10 +83,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dyvbk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n4ktq")
+"texture": SubResource("AtlasTexture_j1qbq")
 }],
 "loop": true,
 "name": &"FlutterAnim",
@@ -105,7 +99,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nid6r")
+"texture": SubResource("AtlasTexture_u1g05")
 }],
 "loop": true,
 "name": &"JumpAnim",
@@ -113,25 +107,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gp2vs")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_br0ub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ilk0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3fwbj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p8tro")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_83h3v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gp2vs")
+"texture": SubResource("AtlasTexture_p8tro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fwbj")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g46rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilk0r")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5p6ji")
@@ -177,6 +171,6 @@ shape = SubResource("CircleShape2D_2h02b")
 position = Vector2(3, 0)
 scale = Vector2(0.270418, 0.280095)
 sprite_frames = SubResource("SpriteFrames_oi3wb")
-animation = &"JumpAnim"
+animation = &"FlutterAnim"
 
 [connection signal="area_entered" from="Arm/Area2D" to="." method="_on_area_2d_area_entered"]
