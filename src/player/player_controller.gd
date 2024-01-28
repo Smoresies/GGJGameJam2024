@@ -4,15 +4,15 @@ extends CharacterBody2D
 @export_category("Character Speed Controls")
 @export var GROUND_SPEED = 400
 @export var STOP_SPEED = 300
-@export var AIR_ACCEL = 1000
+@export var AIR_ACCEL = 800
 @export var AIR_DECEL = 2000
 @export var FLUTTER_FORCE = 2500
 @export var FLUTTER_GRAVITY_MOD = .7
 
 @export var FENCING_LUNGE_COOLDOWN = .5
-@export var FENCING_LUNGE_SPEED = 650
+@export var FENCING_LUNGE_SPEED = 1500
 @export var FENCING_LUNGE_ARM_OFFSET = 15
-@export var FENCING_HOP_SPEED = 125
+@export var FENCING_HOP_SPEED = 200
 
 @export var MIN_GUST_SPEED = 8
 @export var MAX_GUST_SPEED = 30

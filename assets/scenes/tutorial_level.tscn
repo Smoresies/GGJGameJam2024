@@ -112,7 +112,6 @@ shape = SubResource("RectangleShape2D_rfeqq")
 position = Vector2(286, 178)
 
 [node name="Camera" parent="TutorialLevel" node_paths=PackedStringArray("PLAYER") instance=ExtResource("2_6bey5")]
-position = Vector2(-2, -3)
 PLAYER = NodePath("../Player")
 
 [node name="Area2D" type="Area2D" parent="TutorialLevel"]

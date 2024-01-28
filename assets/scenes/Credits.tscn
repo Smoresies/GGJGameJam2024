@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbgoi4s2117e8"]
+[gd_scene load_steps=2 format=3 uid="uid://di8hbghoq5u5q"]
 
 [ext_resource type="Script" path="res://src/game/main_menu.gd" id="1_jm1w6"]
 
@@ -37,7 +37,7 @@ grow_vertical = 2
 layout_mode = 2
 text = "Credits:
 
-Ivan Hoffman - Lead Programming
+Ivan Hoffmann - Lead Programming
 Gavin Britton - Game Design & Programming
 Re Nocturne - Narrative Designer
 Monny - Art
