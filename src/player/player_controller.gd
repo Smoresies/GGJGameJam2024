@@ -20,7 +20,8 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY = -800
 @export var MAX_SPEED = 600
 
-@export var FLAP_COOLDOWN = 2.0
+@export var ASSISTED_FLUTTER_HANDICAP = .3
+@export var FLUTTER_COOLDOWN = 2.0
 @export var ARM_SPEED_BUFFER = 10
 
 @export var GRAVITY_MUL = 1.9
@@ -32,6 +33,8 @@ extends CharacterBody2D
 @export var FLUTTER_ANIMATION = "TestIdleAnimation"
 @export var FENCING_ANIMATION = "TestIdleAnimation"
 @export var FALL_ANIMATION = "TestIdleAnimation"
+
+@export var _fencing_enemy = Node2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _arm = $Arm
@@ -63,7 +66,7 @@ func _process(_delta):
 func _rotate_feather(delta, timer):
 	# rotate the feather about the shoulder
 	var angle_diff = _arm.get_angle_to(get_global_mouse_position())
-	_arm.rotation += angle_diff + int(Input.is_action_pressed("Flutter")) * .6 * sin(timer * 50)
+	_arm.rotation += angle_diff + int(Input.is_action_pressed("flutter")) * .6 * sin(timer * 50)
 	_ave_arm_speed = (_ave_arm_speed * ARM_SPEED_BUFFER + abs(angle_diff) / delta) / (ARM_SPEED_BUFFER + 1)
 	
 func _slide_feather(_delta, timer):
@@ -161,7 +164,7 @@ func _process_state_fluttering(delta):
 	if is_on_floor():
 		_set_state_grounded()
 		return
-	if _state_timer > FLAP_COOLDOWN:
+	if _state_timer > FLUTTER_COOLDOWN:
 		_set_state_falling()
 		return
 		
@@ -196,10 +199,10 @@ func _process_state_fencing(delta):
 	var xinput = Input.get_axis("left", "right")
 	if is_on_floor():
 		_arm.position.x = 0
-		if xinput and _state_timer > FENCING_LUNGE_COOLDOWN * .5:
+		if xinput and _state_timer > FENCING_LUNGE_COOLDOWN * .8:
 			velocity.x = xinput * GROUND_SPEED
 			velocity.y -= FENCING_HOP_SPEED
-			_state_timer = 0
+			_state_timer = FENCING_LUNGE_COOLDOWN * .3
 	
 		elif Input.is_action_pressed("jump") and _state_timer > FENCING_LUNGE_COOLDOWN:
 			# lunge
@@ -234,3 +237,5 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func _on_area_2d_area_entered(area):
+	print("player weapon hit")
