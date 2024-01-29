@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://8hfblc60amow"]
+[gd_scene load_steps=31 format=3 uid="uid://8hfblc60amow"]
 
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_1sf8y"]
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_egwfh"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://q3uraoqtpluo" path="res://assets/Art/Platform.png" id="6_vnv7i"]
 [ext_resource type="Script" path="res://src/game/level1switcher.gd" id="6_we6dk"]
 [ext_resource type="Texture2D" uid="uid://b65d5pkwlgl42" path="res://assets/Art/Honk.png" id="7_hev60"]
+[ext_resource type="AudioStream" uid="uid://c8mnqveidqawm" path="res://assets/Audio/Music/05 The Entire Circus.ogg" id="10_w68gg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nj0nc"]
 load_path = "res://.godot/imported/Platform.png-c15c76bc959d68cf87cee3d08aed6795.ctex"
@@ -391,6 +392,12 @@ script = ExtResource("6_we6dk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/LeaveLevel"]
 position = Vector2(9606.5, 256)
 shape = SubResource("RectangleShape2D_n1fwj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_w68gg")
+volume_db = -12.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="body_entered" from="Barriers/DeathZone" to="Barriers/DeathZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Barriers/LeaveLevel" to="Barriers/LeaveLevel" method="_on_body_entered"]
