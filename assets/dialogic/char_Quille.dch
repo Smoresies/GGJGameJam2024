@@ -17,7 +17,7 @@
 "portraits": {
 "TestPortrait": {
 "export_overrides": {
-"image": ""
+"image": "\"\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

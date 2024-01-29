@@ -259,7 +259,7 @@ func _on_dialogic_signal(argument:String): #Note, this signal/function is being 
 		pass
 	#Combat Won Logic Here
 	if argument == "combat_lost":
-		pass
+		SceneManager.SwitchScene("Level1")
 	#Combat Lost Logic Here
 
 var inDialogue: bool = false

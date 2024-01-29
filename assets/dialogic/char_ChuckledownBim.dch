@@ -17,11 +17,11 @@
 "portraits": {
 "TestPortrait": {
 "export_overrides": {
-"image": ""
+"image": "\"res://assets/Art/Clown.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1,
+"offset": Vector2(0, 100),
+"scale": 0.2,
 "scene": ""
 }
 },

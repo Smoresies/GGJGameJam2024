@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=23 format=3 uid="uid://cyocad6w3qxb0"]
 
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_rpm7l"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="5_qvla3"]
 [ext_resource type="Script" path="res://assets/scenes/tutorialdeath.gd" id="6_big7o"]
+[ext_resource type="PackedScene" uid="uid://dw37qie66yod2" path="res://assets/scenes/DialogueTrigger.tscn" id="7_e6y0o"]
+[ext_resource type="PackedScene" uid="uid://4wtjeeal2rw7" path="res://assets/scenes/DialogueImmediate.tscn" id="7_nxogw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
 size = Vector2(2208, 44)
@@ -173,6 +175,14 @@ script = ExtResource("6_big7o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/Barriers/DeathBound"]
 position = Vector2(2107, 317)
 shape = SubResource("RectangleShape2D_5nt6t")
+
+[node name="DialogueTrigger" parent="TutorialLevel" instance=ExtResource("7_e6y0o")]
+position = Vector2(976, 246)
+scale = Vector2(1, 27.28)
+TIMELINE_NAME = "t_Flight"
+
+[node name="DialogueImmediate" parent="." instance=ExtResource("7_nxogw")]
+TIMELINE_NAME = "t_Opening"
 
 [connection signal="body_entered" from="TutorialLevel/Area2D" to="TutorialLevel/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="TutorialLevel/Barriers/DeathBound" to="TutorialLevel/Barriers/DeathBound" method="_on_body_entered"]
