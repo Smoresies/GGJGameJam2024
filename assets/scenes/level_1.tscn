@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgkf1qafujt1a"]
+[gd_scene load_steps=9 format=3 uid="uid://cgkf1qafujt1a"]
 
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_8ggq5"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_iu4k5"]
 [ext_resource type="PackedScene" uid="uid://dw37qie66yod2" path="res://assets/scenes/DialogueTrigger.tscn" id="3_o6q46"]
 [ext_resource type="PackedScene" uid="uid://b0hk73geu0cl0" path="res://assets/scenes/fencing_trigger.tscn" id="4_kgnqq"]
-[ext_resource type="PackedScene" path="res://assets/scenes/fencing_enemy.tscn" id="5_gxjva"]
+[ext_resource type="PackedScene" uid="uid://c42kh5yv6xd1m" path="res://assets/scenes/fencing_enemy.tscn" id="5_gxjva"]
+[ext_resource type="AudioStream" uid="uid://btrc0ojjkjxf2" path="res://assets/Audio/Music/03 Take Flight.ogg" id="6_hsebw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87tga"]
 
@@ -202,5 +203,13 @@ _player = NodePath("../Player")
 [node name="FencingEnemy" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("5_gxjva")]
 position = Vector2(2509, 350)
 _player = NodePath("../Player")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="music_level1" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_hsebw")
+volume_db = -12.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="triggered_fencing" from="FencingTrigger" to="Player" method="_set_state_jousting"]

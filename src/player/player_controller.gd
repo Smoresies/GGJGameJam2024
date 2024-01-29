@@ -40,7 +40,6 @@ extends CharacterBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _arm = $Arm
 
-
 enum STATES {
 	GROUNDED,
 	JUMPING,
@@ -57,12 +56,18 @@ var _ave_arm_speed = 0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+## ETHAN AUDIO STUFF
+var can_fly_sound = true
+@onready var can_fly_sound_timer = $Audio/can_fly_sound_timer
+## END ETHAN AUDIO STUFF
+
 func _get_gravity(y_vel):
 	return GRAVITY_MUL * gravity * (GRAVITY_MIN + 1 - clamp(GRAVITY_RAMP - abs(y_vel), 0, GRAVITY_RAMP) / GRAVITY_RAMP)
 	
 func _process(_delta):
 	# update body
 	#_animated_sprite.flip_h = (get_global_mouse_position().x - position.x < 0)
+	## 
 	pass
 	
 func _rotate_feather(delta, timer):
@@ -87,6 +92,7 @@ func _set_state_grounded():
 	_state = STATES.GROUNDED
 
 func _set_state_jumping():
+	sfx_make_jump_sound()
 	_set_state()
 	_animated_sprite.play(FLY_ANIMATION)
 	_state = STATES.JUMPING
@@ -97,6 +103,9 @@ func _set_state_falling():
 	_state = STATES.FALLING
 	
 func _set_state_fluttering():
+	## ETHAN AUDIO JANK
+	sfx_make_fly_sound()
+	## END ETHAN AUDIO JANK
 	if _state == STATES.FLUTTERING:
 		return
 	_set_state()
@@ -138,6 +147,9 @@ func _process_state_grounded(delta):
 		if _animated_sprite.animation == IDLE_ANIMATION:
 			_animated_sprite.stop()
 			_animated_sprite.play(WALK_ANIMATION)
+			## ETHAN AUDIO JANK
+#			sfx_make_walk_sound()
+			## END ETHAN AUDIO JANK
 			
 		velocity.x = xinput * GROUND_SPEED
 	else:
@@ -249,6 +261,7 @@ func _physics_process(delta):
 func _on_area_2d_area_entered(area):
 	print("player weapon hit")
 
+
 func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.timeline_started.connect(_on_timeline_started)
@@ -272,3 +285,28 @@ func _on_timeline_started():
 func _on_timeline_ended():
 	inDialogue = false
 	#Unpausing logic for when dialogue scene ends
+
+
+## ETHAN AUDIO JANK
+#func sfx_make_walk_sound():
+#	if _animated_sprite.animation == WALK_ANIMATION:
+#		if (_animated_sprite.get_frame() == 1 or _animated_sprite.get_frame() == 4):
+#			$Audio/sfx_player_foot
+#			$Audio/sfx_player_walk_foley
+
+func sfx_make_jump_sound():
+	$Audio/sfx_player_jump_foley.play()
+	if(randi() % 10 < 7):
+		$Audio/sfx_player_jump_vocal.play()
+
+func sfx_make_fly_sound(): 
+	if(can_fly_sound):
+		$Audio/sfx_player_fly.play()
+		can_fly_sound = false
+		#can_fly_sound_timer.set_paused(false)
+		can_fly_sound_timer.start(0.25)
+
+func _on_can_fly_sound_timer_timeout():
+	can_fly_sound = true
+	#can_fly_sound_timer.set_paused(true)
+## END ETHAN AUDIO JANK
