@@ -1,12 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://cyocad6w3qxb0"]
+[gd_scene load_steps=25 format=3 uid="uid://cyocad6w3qxb0"]
 
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_rpm7l"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="1_swf5b"]
+[ext_resource type="Texture2D" uid="uid://dpmrocsnjpcy1" path="res://assets/Art/IMG_0056.PNG" id="2_4o2hp"]
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="2_6bey5"]
 [ext_resource type="Script" path="res://src/game/tutorial_level_changer.gd" id="3_06kq4"]
+[ext_resource type="Texture2D" uid="uid://bvn5ir0k574lc" path="res://assets/Art/IMG_0057.PNG" id="3_lumjg"]
+[ext_resource type="Texture2D" uid="uid://q3uraoqtpluo" path="res://assets/Art/Platform.png" id="5_pkkxc"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="5_qvla3"]
 
 [ext_resource type="Script" path="res://assets/scenes/tutorialdeath.gd" id="6_big7o"]
+[ext_resource type="Texture2D" uid="uid://y2gem10tnu7i" path="res://assets/Art/RennFaire.png" id="7_6v1b5"]
 
 [ext_resource type="AudioStream" uid="uid://btrc0ojjkjxf2" path="res://assets/Audio/Music/03 Take Flight.ogg" id="6_bfsnl"]
 
@@ -16,11 +20,11 @@ size = Vector2(2208, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx835"]
 size = Vector2(888.5, 66)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_47dyc"]
-size = Vector2(97.5, 76)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcn7e"]
 size = Vector2(88.5, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47dyc"]
+size = Vector2(97.5, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgf3v"]
 size = Vector2(119, 169)
@@ -56,6 +60,21 @@ size = Vector2(4858, 168)
 process_mode = 3
 script = ExtResource("1_rpm7l")
 
+[node name="Img0056" type="Sprite2D" parent="."]
+position = Vector2(2178, -750)
+scale = Vector2(1.2474, 1.26204)
+texture = ExtResource("2_4o2hp")
+
+[node name="Img0057" type="Sprite2D" parent="."]
+position = Vector2(2156.5, 32.5)
+scale = Vector2(1.27109, 0.568056)
+texture = ExtResource("3_lumjg")
+
+[node name="RennFaire" type="Sprite2D" parent="."]
+position = Vector2(2182, -729)
+scale = Vector2(1.275, 1.275)
+texture = ExtResource("7_6v1b5")
+
 [node name="TutorialLevel" type="Node2D" parent="."]
 process_mode = 1
 
@@ -68,29 +87,69 @@ position = Vector2(2, 613)
 position = Vector2(1094, 12)
 shape = SubResource("RectangleShape2D_7esrx")
 
+[node name="Sprite2D" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D"]
+position = Vector2(1096, 16)
+scale = Vector2(8.48, 0.200001)
+texture = ExtResource("5_pkkxc")
+
 [node name="StaticBody2D8" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(2, 613)
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D8"]
+position = Vector2(3233, -3)
+scale = Vector2(3.48, 0.279999)
+texture = ExtResource("5_pkkxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D8"]
 position = Vector2(3223.75, 0)
 shape = SubResource("RectangleShape2D_gx835")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
-position = Vector2(-76, 524)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D2"]
-position = Vector2(668.25, 40)
-shape = SubResource("RectangleShape2D_47dyc")
-
 [node name="StaticBody2D3" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D3"]
+position = Vector2(667, 43)
+scale = Vector2(0.388205, 0.299539)
+texture = ExtResource("5_pkkxc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D3"]
+position = Vector2(1074, 43)
+scale = Vector2(0.388205, 0.299539)
+texture = ExtResource("5_pkkxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D3"]
 position = Vector2(1069, 43)
 shape = SubResource("RectangleShape2D_bcn7e")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
+position = Vector2(-76, 524)
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D2"]
+position = Vector2(4452, 61)
+scale = Vector2(3.12, 0.315143)
+texture = ExtResource("5_pkkxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D2"]
+position = Vector2(668.25, 40)
+shape = SubResource("RectangleShape2D_47dyc")
+
 [node name="StaticBody2D4" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D4"]
+position = Vector2(1284, 17)
+scale = Vector2(-0.489388, 0.869926)
+texture = ExtResource("5_pkkxc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D4"]
+position = Vector2(2054, 17)
+scale = Vector2(-0.489388, 0.869926)
+texture = ExtResource("5_pkkxc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D4"]
+position = Vector2(2423, -53)
+scale = Vector2(-1.314, 2.338)
+texture = ExtResource("5_pkkxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D4"]
 position = Vector2(1286, -9)
@@ -98,6 +157,11 @@ shape = SubResource("RectangleShape2D_qgf3v")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="TutorialLevel/BackgroundObjects"]
 position = Vector2(-76, 524)
+
+[node name="Sprite2D" type="Sprite2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D5"]
+position = Vector2(1402, 31)
+scale = Vector2(0.452365, 0.368333)
+texture = ExtResource("5_pkkxc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialLevel/BackgroundObjects/StaticBody2D5"]
 position = Vector2(2051, -7)
@@ -125,7 +189,7 @@ position = Vector2(4331, 68)
 shape = SubResource("RectangleShape2D_rfeqq")
 
 [node name="Player" parent="TutorialLevel" instance=ExtResource("1_swf5b")]
-position = Vector2(286, 178)
+position = Vector2(153, 503)
 
 [node name="Camera" parent="TutorialLevel" node_paths=PackedStringArray("PLAYER") instance=ExtResource("2_6bey5")]
 PLAYER = NodePath("../Player")

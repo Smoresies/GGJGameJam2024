@@ -1,11 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://8hfblc60amow"]
+[gd_scene load_steps=30 format=3 uid="uid://8hfblc60amow"]
 
 [ext_resource type="PackedScene" uid="uid://cxx7cjrxbul1w" path="res://assets/scenes/camera.tscn" id="1_1sf8y"]
 [ext_resource type="Script" path="res://src/game/game_manager.gd" id="1_egwfh"]
+[ext_resource type="Texture2D" uid="uid://dpmrocsnjpcy1" path="res://assets/Art/IMG_0056.PNG" id="2_38c5e"]
 [ext_resource type="PackedScene" uid="uid://rdchyi7a67oe" path="res://assets/scenes/player.tscn" id="2_jhtfd"]
 [ext_resource type="PackedScene" uid="uid://g285ji41wqus" path="res://assets/scenes/pause_menu.tscn" id="4_c6hiq"]
 [ext_resource type="Script" path="res://assets/scenes/death_zone.gd" id="5_nrnja"]
+[ext_resource type="Texture2D" uid="uid://q3uraoqtpluo" path="res://assets/Art/Platform.png" id="6_vnv7i"]
 [ext_resource type="Script" path="res://src/game/level1switcher.gd" id="6_we6dk"]
+[ext_resource type="Texture2D" uid="uid://b65d5pkwlgl42" path="res://assets/Art/Honk.png" id="7_hev60"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nj0nc"]
+load_path = "res://.godot/imported/Platform.png-c15c76bc959d68cf87cee3d08aed6795.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhavs"]
 size = Vector2(899.5, 37)
@@ -20,7 +26,7 @@ size = Vector2(252, 415)
 size = Vector2(284, 531.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bkxg"]
-size = Vector2(80, 419)
+size = Vector2(80, 510)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8d3x"]
 size = Vector2(583.5, 71)
@@ -35,7 +41,7 @@ size = Vector2(1171.5, 152)
 size = Vector2(289, 262)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbu2g"]
-size = Vector2(146, 426)
+size = Vector2(146, 496)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04wgh"]
 size = Vector2(322, 54.5)
@@ -68,6 +74,88 @@ size = Vector2(733, 1360)
 process_mode = 3
 script = ExtResource("1_egwfh")
 
+[node name="Node" type="Node" parent="."]
+
+[node name="Img0056" type="Sprite2D" parent="Node"]
+position = Vector2(766, 58)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Img0063" type="Sprite2D" parent="Node"]
+position = Vector2(-730, 58)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Img0057" type="Sprite2D" parent="Node"]
+position = Vector2(2258, 62)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Img0058" type="Sprite2D" parent="Node"]
+position = Vector2(3690, 62)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Img0059" type="Sprite2D" parent="Node"]
+position = Vector2(5182, 58)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Img0060" type="Sprite2D" parent="Node"]
+position = Vector2(6678, 54)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Img0061" type="Sprite2D" parent="Node"]
+position = Vector2(8150, 62)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Img0062" type="Sprite2D" parent="Node"]
+position = Vector2(9074, 54)
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_38c5e")
+
+[node name="Honk" type="Sprite2D" parent="Node"]
+position = Vector2(705, 270)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
+[node name="Honk2" type="Sprite2D" parent="Node"]
+position = Vector2(2108, 274)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
+[node name="Honk8" type="Sprite2D" parent="Node"]
+position = Vector2(-688, 294)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
+[node name="Honk3" type="Sprite2D" parent="Node"]
+position = Vector2(3508, 272)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
+[node name="Honk4" type="Sprite2D" parent="Node"]
+position = Vector2(4907, 272)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
+[node name="Honk5" type="Sprite2D" parent="Node"]
+position = Vector2(6306, 271)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
+[node name="Honk6" type="Sprite2D" parent="Node"]
+position = Vector2(7712, 269)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
+[node name="Honk7" type="Sprite2D" parent="Node"]
+position = Vector2(9112, 265)
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("7_hev60")
+
 [node name="Honkville" type="Node" parent="."]
 process_mode = 1
 
@@ -81,11 +169,21 @@ position = Vector2(83, 549)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D"]
+position = Vector2(290, 647)
+scale = Vector2(4.79145, 0.238281)
+texture = SubResource("CompressedTexture2D_nj0nc")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D"]
 position = Vector2(452.25, 636)
 shape = SubResource("RectangleShape2D_qhavs")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Honkville/Backgrounds"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D2"]
+position = Vector2(1077, 512)
+scale = Vector2(0.702925, 1.10412)
+texture = SubResource("CompressedTexture2D_nj0nc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D2"]
 position = Vector2(1080, 513.5)
@@ -93,11 +191,21 @@ shape = SubResource("RectangleShape2D_cxy6t")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D3"]
+position = Vector2(1453, 440)
+scale = Vector2(1, 1.6)
+texture = ExtResource("6_vnv7i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D3"]
 position = Vector2(1453, 445.5)
 shape = SubResource("RectangleShape2D_sy6v4")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Honkville/Backgrounds"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D4"]
+position = Vector2(1847, 397)
+scale = Vector2(1.12, 2.12)
+texture = ExtResource("6_vnv7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D4"]
 position = Vector2(1845, 392.875)
@@ -105,11 +213,21 @@ shape = SubResource("RectangleShape2D_bms5s")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D5"]
+position = Vector2(2280, 157)
+scale = Vector2(0.32, 2.08)
+texture = ExtResource("6_vnv7i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D5"]
-position = Vector2(2280, 214.5)
+position = Vector2(2280, 169)
 shape = SubResource("RectangleShape2D_1bkxg")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="Honkville/Backgrounds"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D6"]
+position = Vector2(2504, 633)
+scale = Vector2(2.27999, 0.32)
+texture = ExtResource("6_vnv7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D6"]
 position = Vector2(2503.25, 630)
@@ -117,11 +235,21 @@ shape = SubResource("RectangleShape2D_t8d3x")
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D7"]
+position = Vector2(2771, 421)
+scale = Vector2(0.759995, 1.92)
+texture = ExtResource("6_vnv7i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D7"]
 position = Vector2(2765, 420.5)
 shape = SubResource("RectangleShape2D_8g36h")
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="Honkville/Backgrounds"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D8"]
+position = Vector2(3774, 485)
+scale = Vector2(0.76, 2.48)
+texture = ExtResource("6_vnv7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D8"]
 position = Vector2(3771, 409)
@@ -129,11 +257,21 @@ shape = SubResource("RectangleShape2D_8g36h")
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D9"]
+position = Vector2(4707, 568)
+scale = Vector2(4.57538, 0.613801)
+texture = ExtResource("6_vnv7i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D9"]
 position = Vector2(4705.25, 565)
 shape = SubResource("RectangleShape2D_vohpv")
 
 [node name="StaticBody2D10" type="StaticBody2D" parent="Honkville/Backgrounds"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D10"]
+position = Vector2(5673, 517)
+scale = Vector2(1.13044, 1.08)
+texture = ExtResource("6_vnv7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D10"]
 position = Vector2(5673.5, 509)
@@ -141,11 +279,21 @@ shape = SubResource("RectangleShape2D_p7ptt")
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D11"]
+position = Vector2(6161, 157)
+scale = Vector2(0.6, 1.96)
+texture = ExtResource("6_vnv7i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D11"]
-position = Vector2(6159, 213)
+position = Vector2(6159, 160)
 shape = SubResource("RectangleShape2D_mbu2g")
 
 [node name="StaticBody2D12" type="StaticBody2D" parent="Honkville/Backgrounds"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D12"]
+position = Vector2(6508, 626)
+scale = Vector2(1.28, 0.2)
+texture = ExtResource("6_vnv7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D12"]
 position = Vector2(6510, 624)
@@ -157,7 +305,17 @@ shape = SubResource("RectangleShape2D_04wgh")
 position = Vector2(6735, 384)
 shape = SubResource("RectangleShape2D_lc63m")
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D13"]
+position = Vector2(6352, 316)
+scale = Vector2(0.920039, 0.2)
+texture = ExtResource("6_vnv7i")
+
 [node name="StaticBody2D14" type="StaticBody2D" parent="Honkville/Backgrounds"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D14"]
+position = Vector2(6736, 379)
+scale = Vector2(0.583512, 1.97983)
+texture = ExtResource("6_vnv7i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D14"]
 position = Vector2(6352, 313)
@@ -165,17 +323,28 @@ shape = SubResource("RectangleShape2D_nh6wy")
 
 [node name="StaticBody2D15" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D15"]
+position = Vector2(7668, 613)
+scale = Vector2(2.04, 0.304127)
+texture = ExtResource("6_vnv7i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D15"]
 position = Vector2(7668.75, 617)
 shape = SubResource("RectangleShape2D_232gd")
 
 [node name="StaticBody2D16" type="StaticBody2D" parent="Honkville/Backgrounds"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Honkville/Backgrounds/StaticBody2D16"]
+position = Vector2(9003, 552)
+scale = Vector2(5.72, 1)
+texture = ExtResource("6_vnv7i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Honkville/Backgrounds/StaticBody2D16"]
 position = Vector2(8732.75, 541)
 shape = SubResource("RectangleShape2D_ndjq3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_c6hiq")]
 game_manager = NodePath("../..")
