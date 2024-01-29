@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://btrc0ojjkjxf2" path="res://assets/Audio/Music/03 Take Flight.ogg" id="6_bfsnl"]
 [ext_resource type="Script" path="res://assets/scenes/tutorialdeath.gd" id="6_big7o"]
 [ext_resource type="Texture2D" uid="uid://y2gem10tnu7i" path="res://assets/Art/RennFaire.png" id="7_6v1b5"]
+[ext_resource type="PackedScene" uid="uid://dw37qie66yod2" path="res://assets/scenes/DialogueTrigger.tscn" id="7_e6y0o"]
+[ext_resource type="PackedScene" uid="uid://4wtjeeal2rw7" path="res://assets/scenes/DialogueImmediate.tscn" id="7_nxogw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7esrx"]
 size = Vector2(2208, 44)
@@ -244,6 +246,13 @@ shape = SubResource("RectangleShape2D_5nt6t")
 [node name="music_level0" type="AudioStreamPlayer" parent="TutorialLevel/Audio"]
 stream = ExtResource("6_bfsnl")
 autoplay = true
+[node name="DialogueTrigger" parent="TutorialLevel" instance=ExtResource("7_e6y0o")]
+position = Vector2(976, 246)
+scale = Vector2(1, 27.28)
+TIMELINE_NAME = "t_Flight"
+
+[node name="DialogueImmediate" parent="." instance=ExtResource("7_nxogw")]
+TIMELINE_NAME = "t_Opening"
 
 [connection signal="body_entered" from="TutorialLevel/Area2D" to="TutorialLevel/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="TutorialLevel/Barriers/DeathBound" to="TutorialLevel/Barriers/DeathBound" method="_on_body_entered"]
